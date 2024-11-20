@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">melhoraIfam</string>
+    <string name="app_name">Melhora IFAM</string>
+
+    <!-- Navigation Bar Inferior -->
+    <string name="home">Página Inicial</string>
+    <string name="ocorrencias">Minhas Ocorrências</string>
+    <string name="perfil">Meu Perfil</string>
+
+    <!-- Filtragens na homepage -->
+    <string name="mais_recentes">Mais recentes</string>
+    <string name="por_local">Por local</string>
+    <string name="por_status">Por status</string>
+    <string name="por_categoria">Por categoria</string>
+
+    <!-- Texto debaixo da search bar -->
+    <string name="mais_recentes_txt">Ocorrências públicas - Mais recentes</string>
+    <string name="por_local_txt">Ocorrências públicas - Por local</string>
+    <string name="por_status_txt">Ocorrências públicas - Por status</string>
+    <string name="por_categoria_txt">Ocorrências públicas - Por categoria</string>
+
 </resources>
