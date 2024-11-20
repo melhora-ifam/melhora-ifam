@@ -1,5 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Cores Básicas -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Paleta Principal -->
+    <color name="primary_navy_900">#071735</color>
+    <color name="primary_teal_800">#0B4142</color>
+    <color name="primary_teal_700">#0F595A</color>
+    <color name="primary_green_600">#136554</color>
+    <color name="primary_green_500">#1A7744</color>
+    <color name="primary_light_green_400">#459668</color>
+    <color name="primary_light_green_300">#6BBF78</color>
+    <color name="primary_lighter_green_200">#81C182</color>
+    <color name="primary_pale_green_100">#A2D3A2</color>
+    <color name="primary_off_white_50">#C8E4C2</color>
+
+    <!-- Paleta Neutra -->
+    <color name="neutral_dark_900">#212121</color>
+    <color name="neutral_dark_800">#424242</color>
+    <color name="neutral_dark_700">#616161</color>
+    <color name="neutral_mid_600">#757575</color>
+    <color name="neutral_mid_500">#9E9E9E</color>
+    <color name="neutral_light_400">#BDBDBD</color>
+    <color name="neutral_light_300">#E0E0E0</color>
+    <color name="neutral_light_200">#EEEEEE</color>
+    <color name="neutral_light_100">#F5F5F5</color>
+    <color name="neutral_light_50">#FAFAFA</color>
+
+    <!-- Paleta de Feedback -->
+    <!-- Cores de Sucesso -->
+    <color name="success_dark_900">#2E7D32</color>
+    <color name="success_mid_800">#388E3C</color>
+    <color name="success_mid_700">#43A047</color>
+    <color name="success_light_600">#66BB6A</color>
+    <color name="success_light_500">#81C784</color>
+    <color name="success_light_400">#A5D6A7</color>
+    <color name="success_pale_300">#C8E6C9</color>
+    <color name="success_pale_200">#DCEDC8</color>
+    <color name="success_pale_100">#E8F5E9</color>
+    <color name="success_off_white_50">#F1F8E9</color>
+
+    <!-- Cores de Erro -->
+    <color name="error_dark_900">#B71C1C</color>
+    <color name="error_mid_800">#C62828</color>
+    <color name="error_mid_700">#D32F2F</color>
+    <color name="error_light_600">#E53935</color>
+    <color name="error_light_500">#F44336</color>
+    <color name="error_light_400">#EF5350</color>
+    <color name="error_pale_300">#E57373</color>
+    <color name="error_pale_200">#EF9A9A</color>
+    <color name="error_pale_100">#FFCDD2</color>
+    <color name="error_off_white_50">#FFEBEE</color>
+
+    <!-- Cores de Aviso -->
+    <color name="warning_dark_900">#FF6F00</color>
+    <color name="warning_mid_800">#FF8F00</color>
+    <color name="warning_mid_700">#FFA000</color>
+    <color name="warning_light_600">#FFB300</color>
+    <color name="warning_light_500">#FFC107</color>
+    <color name="warning_light_400">#FFD54F</color>
+    <color name="warning_pale_300">#FFE082</color>
+    <color name="warning_pale_200">#FFECB3</color>
+    <color name="warning_pale_100">#FFF8E1</color>
+    <color name="warning_off_white_50">#FFFDE7</color>
 </resources>
