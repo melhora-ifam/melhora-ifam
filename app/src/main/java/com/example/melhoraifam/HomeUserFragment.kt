@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.PopupMenu
+import android.widget.SearchView
+import android.widget.TextView
 import android.widget.Toast
+import com.example.melhoraifam.databinding.ActivityMainBinding
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -25,7 +28,6 @@ class HomeUserFragment : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
-
     }
 
     override fun onCreateView(
@@ -34,33 +36,54 @@ class HomeUserFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home_user, container, false)
 
+        // Lógica da barra de pesquisa
+        val search = view.findViewById<SearchView>(R.id.barraDePesquisaHomeUser)
+        search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                Toast.makeText(context, "Procurando por: $query", Toast.LENGTH_SHORT).show()
+                return true
+            }
 
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Toast.makeText(context, "Texto digitado: $newText", Toast.LENGTH_SHORT).show()
+                return true
+            }
+        })
+
+        // Lógica do botão de filtro
         val filter: ImageButton = view.findViewById<ImageButton>(R.id.filterButton)
-        filter.setOnClickListener() {
-            val popupMenu = PopupMenu(context, filter)
+        filter.setOnClickListener() { v->
+            val popupMenu = PopupMenu(context, v)
+            val textFiltragem = view.findViewById<TextView>(R.id.textFiltragem)
             popupMenu.menuInflater.inflate(R.menu.filter_menu, popupMenu.menu)
 
             popupMenu.setOnMenuItemClickListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.filter_option_1 -> {
                         Toast.makeText(context, "Filtrando pelos mais recentes!", Toast.LENGTH_SHORT).show()
+                        textFiltragem.text = context?.getString(R.string.mais_recentes_txt)
                         true
                     }
                     R.id.filter_option_2 -> {
                         Toast.makeText(context, "Filtrando por local!", Toast.LENGTH_SHORT).show()
+                        textFiltragem.text = context?.getString(R.string.por_local_txt)
                         true
                     }
                     R.id.filter_option_3 -> {
                         Toast.makeText(context, "Filtrando por categoria!", Toast.LENGTH_SHORT).show()
+                        textFiltragem.text = context?.getString(R.string.por_categoria_txt)
                         true
                     }
                     R.id.filter_option_4 -> {
                         Toast.makeText(context, "Filtrando por status!", Toast.LENGTH_SHORT).show()
+                        textFiltragem.text = context?.getString(R.string.por_status_txt)
                         true
                     }
                     else -> false
                 }
             }
+
+            popupMenu.show()
         }
 
 

@@ -7,6 +7,7 @@
     <string name="perfil">Meu Perfil</string>
 
     <!-- Filtragens na homepage -->
+    <string name="pesquisar_ocorrencias">Pesquisar ocorrências</string>
     <string name="mais_recentes">Mais recentes</string>
     <string name="por_local">Por local</string>
     <string name="por_status">Por status</string>
