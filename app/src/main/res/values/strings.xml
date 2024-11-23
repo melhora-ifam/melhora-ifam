@@ -4,6 +4,7 @@
     <!-- Navigation Bar Inferior -->
     <string name="home">Página Inicial</string>
     <string name="ocorrencias">Ocorrências</string>
+    <string name="usuarios">Usuários</string>
     <string name="perfil">Perfil</string>
     <string name="adicionar_ocorrencia">Adicionar ocorrência</string>
 
@@ -13,11 +14,13 @@
     <string name="por_local">Por local</string>
     <string name="por_status">Por status</string>
     <string name="por_categoria">Por categoria</string>
+    <string name="por_prioridade">Por prioridade</string>
 
     <!-- Texto debaixo da search bar -->
     <string name="mais_recentes_txt">Ocorrências públicas - Mais recentes</string>
     <string name="por_local_txt">Ocorrências públicas - Por local</string>
     <string name="por_status_txt">Ocorrências públicas - Por status</string>
     <string name="por_categoria_txt">Ocorrências públicas - Por categoria</string>
-
+    <string name="por_prioridade_txt">Ocorrências públicas - Por prioridade</string>"
+    
 </resources>

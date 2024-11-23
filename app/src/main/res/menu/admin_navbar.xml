@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="@string/home"
+        android:id="@+id/home_navbar"
+        android:icon="@drawable/home"
+        android:layout_margin="0dp"
+        android:padding="0dp"/>
+
+    <item android:title="@string/usuarios"
+        android:id="@+id/ocorrencias_navbar"
+        android:icon="@drawable/group"
+        android:layout_margin="0dp"
+        android:padding="0dp"/>
+
+    <item android:title="@string/perfil"
+        android:id="@+id/perfil_navbar"
+        android:icon="@drawable/person"
+        android:layout_margin="0dp"
+        android:padding="0dp"/>
+
+</menu>
