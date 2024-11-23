@@ -54,6 +54,22 @@
             app:layout_constraintTop_toBottomOf="@+id/barraPesquisa" />
 
 
+        <LinearLayout
+            android:id="@+id/layoutOcorrencias"
+            android:layout_width="match_parent"
+            android:layout_height="531dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/navBarHomeUser"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textFiltragem">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Ocorrencias"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navBarHomeUser"
             app:menu="@menu/bottom_navbar"
