@@ -3,8 +3,9 @@
 
     <!-- Navigation Bar Inferior -->
     <string name="home">Página Inicial</string>
-    <string name="ocorrencias">Minhas Ocorrências</string>
-    <string name="perfil">Meu Perfil</string>
+    <string name="ocorrencias">Ocorrências</string>
+    <string name="perfil">Perfil</string>
+    <string name="adicionar_ocorrencia">Adicionar ocorrência</string>
 
     <!-- Filtragens na homepage -->
     <string name="pesquisar_ocorrencias">Pesquisar ocorrências</string>

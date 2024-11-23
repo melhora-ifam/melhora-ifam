@@ -11,6 +11,7 @@ import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import com.example.melhoraifam.databinding.ActivityMainBinding
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -35,6 +36,12 @@ class HomeUserFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view = inflater.inflate(R.layout.fragment_home_user, container, false)
+
+        // Lógica do FAB
+        val fab = view.findViewById<FloatingActionButton>(R.id.fabAdicionarOcorrencia)
+        fab.setOnClickListener() {
+            Toast.makeText(context, "Adicionando ocorrência...", Toast.LENGTH_SHORT).show()
+        }
 
         // Lógica da barra de pesquisa
         val search = view.findViewById<SearchView>(R.id.barraDePesquisaHomeUser)
