@@ -10,7 +10,8 @@ import android.widget.PopupMenu
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
-import com.example.melhoraifam.databinding.ActivityMainBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private const val ARG_PARAM1 = "param1"
@@ -31,11 +32,21 @@ class HomeUserFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home_user, container, false)
+
+        // Lógica do RecyclerView
+        /*
+        val recyclerView = view.findViewById<RecyclerView>(R.id.Ocorrencias)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        val ocorrenciasList = arrayListOf(
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 1", "Descrição da ocorrência 1", "Status 1", "Pr.1", "Local 1", "Categoria 1"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 2", "Descrição da ocorrência 2", "Status 2", "Pr.2", "Local 2", "Categoria 2"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 3", "Descrição da ocorrência 3", "Status 3", "Pr.3", "Local 3", "Categoria 3"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 4", "Descrição da ocorrência 4", "Status 4", "Pr.4", "Local 4", "Categoria 4")
+        )
+        recyclerView.adapter = OcorrenciaAdapter(ocorrenciasList)
+        */
 
         // Lógica do FAB
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAdicionarOcorrencia)
@@ -44,7 +55,7 @@ class HomeUserFragment : Fragment() {
         }
 
         // Lógica da barra de pesquisa
-        val search = view.findViewById<SearchView>(R.id.barraDePesquisaHomeUser)
+        val search = view.findViewById<SearchView>(R.id.barraDePesquisaHomeAdmin)
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Toast.makeText(context, "Procurando por: $query", Toast.LENGTH_SHORT).show()

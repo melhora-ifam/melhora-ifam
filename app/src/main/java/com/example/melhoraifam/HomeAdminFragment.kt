@@ -37,7 +37,7 @@ class HomeAdminFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home_admin, container, false)
 
         // Lógica da barra de pesquisa
-        val search = view.findViewById<SearchView>(R.id.barraDePesquisaHomeUser)
+        val search = view.findViewById<SearchView>(R.id.barraDePesquisaHomeAdmin)
         search.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Toast.makeText(context, "Procurando por: $query", Toast.LENGTH_SHORT).show()
