@@ -1,9 +1,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/redefinir_senha"
+    android:id="@+id/cadastro"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/imageView"
@@ -70,15 +71,16 @@
     <Button
         android:id="@+id/buttonCadastrar"
         android:layout_width="328dp"
-        android:layout_height="40dp"
-        android:background="@color/primary_green_600"
+        android:layout_height="48dp"
+        android:backgroundTint="@color/primary_green_600"
         android:text="@string/cadastrar"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.879" />
+        app:layout_constraintTop_toBottomOf="@+id/senha"
+        app:layout_constraintVertical_bias="0.372" />
 
     <EditText
         android:id="@+id/nome"
@@ -89,7 +91,7 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/nome"
+        android:hint="@string/nome"
         android:textColorHint="@color/neutral_dark_900"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
@@ -108,7 +110,7 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/celular"
+        android:hint="@string/celular"
         android:textColorHint="@color/neutral_dark_900"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
@@ -117,15 +119,15 @@
 
     <TextView
         android:id="@+id/minCaracter"
-        android:layout_width="151dp"
+        android:layout_width="161dp"
         android:layout_height="24dp"
         android:text="@string/senha_min_caract"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.834"
+        app:layout_constraintEnd_toEndOf="@+id/senha"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/senha"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.029" />
 
     <TextView
         android:id="@+id/textView3"
@@ -135,8 +137,8 @@
         android:textColor="@color/error_dark_900"
         app:layout_constraintBottom_toTopOf="@+id/email"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.128"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/nome"
         app:layout_constraintTop_toBottomOf="@+id/nome"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -148,8 +150,8 @@
         android:textColor="@color/error_dark_900"
         app:layout_constraintBottom_toTopOf="@+id/celular"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -161,8 +163,8 @@
         android:textColor="@color/error_dark_900"
         app:layout_constraintBottom_toTopOf="@+id/senha"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.133"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/celular"
         app:layout_constraintTop_toBottomOf="@+id/celular"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -175,8 +177,8 @@
         android:textColor="@color/error_dark_900"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.125"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/senha"
         app:layout_constraintTop_toBottomOf="@+id/senha"
         app:layout_constraintVertical_bias="0.0" />
 

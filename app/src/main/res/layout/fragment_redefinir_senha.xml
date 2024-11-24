@@ -1,9 +1,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/redefinir_senha"
+    android:id="@+id/RedefinirSenhaFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/imageView"
@@ -35,10 +36,10 @@
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:background="@color/neutral_light_300"
-        android:drawableStart="@drawable/person"
+        android:drawableStart="@drawable/email"
         android:drawablePadding="10dp"
         android:ems="10"
-        android:hint="@string/email_institucional"
+        android:hint="@string/email_cadastrado"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/neutral_dark_900"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,13 +53,15 @@
         android:id="@+id/recuperarSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="316dp"
+        android:layout_marginBottom="272dp"
         android:text="@string/redefinir_senha"
         android:textColor="@color/neutral_mid_600"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.843"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/email"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonEnviar"
@@ -66,8 +69,9 @@
         android:layout_height="48dp"
         android:layout_marginTop="11dp"
         android:layout_marginBottom="160dp"
-        android:background="@color/primary_green_600"
+        android:backgroundTint="@color/primary_green_600"
         android:text="@string/enviar"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.457"
@@ -83,8 +87,8 @@
         android:textColor="@color/error_dark_900"
         app:layout_constraintBottom_toTopOf="@+id/buttonEnviar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.131"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/email"
         app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -92,8 +96,9 @@
         android:id="@+id/buttonVoltar"
         android:layout_width="328dp"
         android:layout_height="48dp"
-        android:background="@color/neutral_light_200"
+        android:backgroundTint="@color/neutral_light_200"
         android:text="@string/voltar_login"
+        android:textColor="@color/neutral_dark_900"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"

@@ -11,6 +11,7 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="senha_min_caract">Mínimo de 8 caracteres</string>
     <string name="email_invalido">* E-mail inválido</string>
+    <string name="email_cadastrado">E-mail cadastrado</string>
     <string name="nome_invalido">* Nome Inválido</string>
     <string name="celular_invalido">* Celular inválido</string>
     <string name="senha_invalido">* Senha Inválida</string>

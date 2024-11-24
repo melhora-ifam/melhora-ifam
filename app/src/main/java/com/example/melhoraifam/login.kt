@@ -21,17 +21,6 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class login : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,33 +28,30 @@ class login : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_login, container, false)
 
-        // Referenciar o EditText e o TextView para erro
+        // Referenciar os elementos corretamente
         val emailEditText = view.findViewById<EditText>(R.id.email)
         val errorTextView = view.findViewById<TextView>(R.id.erroLogin)
-        val buttonEntrar = view.findViewById<Button>(R.id.buttonCadastrar)
+        val buttonEntrar = view.findViewById<Button>(R.id.buttonLogin) // ID corrigido
 
-
+        // Configurar clique no botão
         buttonEntrar.setOnClickListener {
-
             val email = emailEditText.text.toString()
 
             if (email.isEmpty()) {
-
                 errorTextView.text = "O email não pode estar vazio"
                 errorTextView.visibility = View.VISIBLE // Tornar o erro visível
             } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-                // Exibir erro se o email for inválido
                 errorTextView.text = "Por favor, insira um email válido"
-                errorTextView.visibility = View.VISIBLE // Tornar o erro visível
+                errorTextView.visibility = View.VISIBLE
             } else {
-                // Se o email for válido, esconder a mensagem de erro
                 errorTextView.visibility = View.GONE
-                // Proseguir com a ação (exemplo: login)
+                // Realizar ação adicional, como login
             }
         }
 
         return view
     }
+
 
     companion object {
         /**
