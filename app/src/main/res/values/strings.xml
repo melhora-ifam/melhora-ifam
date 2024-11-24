@@ -4,8 +4,16 @@
     <string name="senha">Senha</string>
     <string name="redefinir_senha">Recuperar a senha?</string>
     <string name="logar">Entrar</string>
-    <string name="cadastro">Não possui uma conta? Cadastre-se</string>
+    <string name="cadastro_mensagem">Não possui uma conta? Cadastre-se</string>
     <string name="erro_login">*E-mail e/ou senha incorretos</string>
+    <string name="nome">Nome</string>
+    <string name="celular">Celular</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="senha_min_caract">Mínimo de 8 caracteres</string>
+    <string name="email_invalido">* E-mail inválido</string>
+    <string name="nome_invalido">* Nome Inválido</string>
+    <string name="celular_invalido">* Celular inválido</string>
+    <string name="senha_invalido">* Senha Inválida</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

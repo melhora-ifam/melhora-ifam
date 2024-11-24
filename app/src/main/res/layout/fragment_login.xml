@@ -79,7 +79,7 @@
         app:layout_constraintVertical_bias="0.028" />
 
     <Button
-        android:id="@+id/buttonEntrar"
+        android:id="@+id/buttonLogin"
         android:layout_width="328dp"
         android:layout_height="40dp"
         android:layout_marginBottom="160dp"
@@ -91,17 +91,17 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/cadastrar"
         android:layout_width="260dp"
         android:layout_height="40dp"
-        android:text="@string/cadastro"
+        android:text="@string/cadastro_mensagem"
         android:textColor="@color/neutral_mid_600"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEntrar"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
         app:layout_constraintVertical_bias="0.066" />
 
     <TextView

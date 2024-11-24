@@ -19,15 +19,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="168dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/app_name"
         android:textColor="#000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
@@ -36,7 +36,7 @@
         android:layout_width="328dp"
         android:layout_height="56dp"
         android:background="@color/neutral_light_300"
-        android:drawableStart="@drawable/person"
+        android:drawableStart="@drawable/email"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="@string/email_institucional"
@@ -47,7 +47,7 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.444" />
 
     <EditText
         android:id="@+id/senha"
@@ -62,48 +62,122 @@
         android:textColorHint="@color/neutral_dark_900"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.481"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="0.053" />
-
-    <TextView
-        android:id="@+id/recuperarSenha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/redefinir_senha"
-        android:textColor="@color/neutral_mid_600"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.841"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/senha"
-        app:layout_constraintVertical_bias="0.028" />
+        app:layout_constraintTop_toBottomOf="@+id/celular"
+        app:layout_constraintVertical_bias="0.149" />
 
     <Button
-        android:id="@+id/buttonEntrar"
+        android:id="@+id/buttonCadastrar"
         android:layout_width="328dp"
         android:layout_height="40dp"
-        android:layout_marginBottom="160dp"
-        android:text="@string/logar"
         android:background="@color/primary_green_600"
+        android:text="@string/cadastrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.879" />
+
+    <EditText
+        android:id="@+id/nome"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:background="@color/neutral_light_300"
+        android:drawableStart="@drawable/person"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/nome"
+        android:textColorHint="@color/neutral_dark_900"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintVertical_bias="0.362" />
+
+    <EditText
+        android:id="@+id/celular"
+        android:layout_width="328dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/neutral_light_300"
+        android:drawableStart="@drawable/celular"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="@string/celular"
+        android:textColorHint="@color/neutral_dark_900"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email" />
+
+    <TextView
+        android:id="@+id/minCaracter"
+        android:layout_width="151dp"
+        android:layout_height="24dp"
+        android:text="@string/senha_min_caract"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.834"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/senha"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="260dp"
-        android:layout_height="40dp"
-        android:text="@string/cadastro"
-        android:textColor="@color/neutral_mid_600"
-        android:textSize="15sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/nome_invalido"
+        android:textColor="@color/error_dark_900"
+        app:layout_constraintBottom_toTopOf="@+id/email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.128"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nome"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/email_invalido"
+        android:textColor="@color/error_dark_900"
+        app:layout_constraintBottom_toTopOf="@+id/celular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/celular_invalido"
+        android:textColor="@color/error_dark_900"
+        app:layout_constraintBottom_toTopOf="@+id/senha"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.133"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/celular"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/senhaErroMensagem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/senha_invalido"
+        android:textColor="@color/error_dark_900"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonEntrar"
-        app:layout_constraintVertical_bias="0.066" />
+        app:layout_constraintTop_toBottomOf="@+id/senha"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
