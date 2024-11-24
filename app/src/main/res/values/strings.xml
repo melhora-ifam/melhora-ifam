@@ -1,3 +1,27 @@
 <resources>
     <string name="app_name">melhoraIfam</string>
+    <string name="titulo">Título</string>
+    <string-array name="categoria_options">
+        <item>Internet</item>
+        <item>Energia</item>
+        <item>Móveis</item>
+        <item>Eletrônicos </item>
+        <item>Água </item>
+        <item>Obras </item>
+        <item>Terreno </item>
+        <item>Iluminação </item>
+        <item>Outro </item>
+    </string-array>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="titulo_placeholder">Ex: Cadeiras Quebradas na Sala</string>
+    <string name="local">Local</string>
+    <string name="local_especifico">Local Específico</string>
+    <string name="local_especifico_placeholder">Ex: Sala 02</string>
+    <string name="descricao">Descrição</string>
+    <string name="descricao_placeholder">Relate aqui ...</string>
+    <string name="imagem">Imagem</string>
+    <string name="categoria">Categoria</string>
+    <string name="imagem_placeholder">Arquivo .png ou .jpeg</string>
+    <string name="enviar">Enviar</string>
+    <string name="registro_de_ocorrencia">Registro de Ocorrência</string>
 </resources>
