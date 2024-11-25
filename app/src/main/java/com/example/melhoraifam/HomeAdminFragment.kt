@@ -1,8 +1,10 @@
 package com.example.melhoraifam
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -10,6 +12,9 @@ import android.widget.PopupMenu
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
@@ -29,12 +34,29 @@ class HomeAdminFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_home_admin, container, false)
+        Log.d("HomeAdminFragment", "onCreateView: Layout carregado");
+
+        val bottomNavBar = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navbar)
+        bottomNavBar.menu.clear()
+        bottomNavBar.inflateMenu(R.menu.admin_navbar)
+
+
+        // Lógica do RecyclerView
+        val recyclerView = view.findViewById<RecyclerView>(R.id.Ocorrencias)
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        val ocorrenciasList = arrayListOf(
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 1", "Descrição da ocorrência 1", "Status 1", "Pr.1", "Local 1", "Categoria 1"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 2", "Descrição da ocorrência 2", "Status 2", "Pr.2", "Local 2", "Categoria 2"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 3", "Descrição da ocorrência 3", "Status 3", "Pr.3", "Local 3", "Categoria 3"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 4", "Descrição da ocorrência 4", "Status 4", "Pr.4", "Local 4", "Categoria 4"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 5", "Descrição da ocorrência 5", "Status 5", "Pr.5", "Local 5", "Categoria 5"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 6", "Descrição da ocorrência 6", "Status 6", "Pr.6", "Local 6", "Categoria 6"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 7", "Descrição da ocorrência 7", "Status 7", "Pr.7", "Local 7", "Categoria 7"),
+            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 8", "Descrição da ocorrência 8", "Status 8", "Pr.8", "Local 8", "Categoria 8")
+        )
+        recyclerView.adapter = OcorrenciaAdapter(ocorrenciasList)
 
         // Lógica da barra de pesquisa
         val search = view.findViewById<SearchView>(R.id.barraDePesquisaHomeAdmin)
@@ -89,6 +111,29 @@ class HomeAdminFragment : Fragment() {
             }
 
             popupMenu.show()
+        }
+
+
+        // Lógica do navBar
+        bottomNavBar.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.home_navbar -> {
+                    Toast.makeText(context, "Homepage", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.usuarios_navbar -> {
+                    val ocorrencias: Fragment = ManageUsuariosFragment()
+                    val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                    transaction.replace(R.id.frameLayoutHome, ocorrencias)
+                    transaction.commit()
+                    true
+                }
+                R.id.perfil_navbar -> {
+                    Toast.makeText(context, "Perfil do usuário", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
         }
 
         return view

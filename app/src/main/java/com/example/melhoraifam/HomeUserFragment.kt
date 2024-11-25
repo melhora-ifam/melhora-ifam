@@ -10,6 +10,7 @@ import android.widget.PopupMenu
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -104,6 +105,29 @@ class HomeUserFragment : Fragment() {
             popupMenu.show()
         }
 
+
+        // Lógica do navBar
+        val navBar = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navbar)
+        navBar.setOnItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.home_navbar -> {
+                    Toast.makeText(context, "Homepage", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                R.id.ocorrencias_navbar -> {
+                    val ocorrencias: Fragment = MyOcorrenciasFragment()
+                    val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                    transaction.replace(R.id.frameLayoutHome, ocorrencias)
+                    transaction.commit()
+                    true
+                }
+                R.id.perfil_navbar -> {
+                    Toast.makeText(context, "Perfil do usuário", Toast.LENGTH_SHORT).show()
+                    true
+                }
+                else -> false
+            }
+        }
 
         return view
     }
