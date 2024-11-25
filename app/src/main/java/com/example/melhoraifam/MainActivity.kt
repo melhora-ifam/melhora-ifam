@@ -1,3 +1,4 @@
+// MainActivity.kt
 package com.example.melhoraifam
 
 import android.content.Intent
@@ -19,10 +20,10 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Criando intent para ir para a home
-        val btnHome = findViewById<Button>(R.id.btnHome)
-        btnHome.setOnClickListener() {
-            val intent = Intent(this, Homepage::class.java)
+        // Criando intent para ir para o perfil
+        val btnPerfil = findViewById<Button>(R.id.btnPerfil)
+        btnPerfil.setOnClickListener() {
+            val intent = Intent(this, PerfilActivity::class.java)
             startActivity(intent)
         }
     }

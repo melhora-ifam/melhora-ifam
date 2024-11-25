@@ -21,7 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Homepage" />
+        <activity android:name=".PerfilActivity" />
     </application>
 
 </manifest>
