@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F5"
@@ -7,7 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="vertical">
 
         <!-- Título e Data -->
@@ -15,19 +16,19 @@
             android:id="@+id/tv_titulo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Cadeiras Quebradas na Sala"
-            android:textSize="20sp"
-            android:textStyle="bold"
             android:paddingBottom="4dp"
-            android:textColor="#000" />
+            android:text="Cadeiras Quebradas na Sala"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_data_categoria"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="01 nov 2024    Categoria: Móveis"
-            android:textSize="14sp"
-            android:textColor="#666" />
+            android:textColor="#666"
+            android:textSize="14sp" />
 
         <!-- Status da Ocorrência -->
         <TextView
@@ -36,18 +37,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Status da Ocorrência"
-            android:textSize="16sp"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textSize="16sp" />
 
         <Spinner
             android:id="@+id/spinner_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/spinner_background"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:spinnerMode="dropdown"
-            android:entries="@array/status_array" />
+            android:layout_marginBottom="8dp"
+            android:background="@drawable/spinner_background"
+            android:entries="@array/status_array"
+            android:spinnerMode="dropdown" />
 
 
         <!-- Prioridade -->
@@ -56,48 +57,113 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Prioridade"
-            android:textSize="16sp"
-            android:textColor="#000" />
+            android:text="@string/prioridade"
+            android:textColor="#000"
+            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/btn_nivel_1"
-                android:layout_width="0dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_nivel_1"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nível 1"
-                android:background="#D6D6D6" />
+                android:layout_marginHorizontal="8dp"
+                app:cardBackgroundColor="@color/neutral_light_300"
+                android:layout_weight="1">
 
-            <Button
-                android:id="@+id/btn_nivel_2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nível 2"
-                android:background="#FFA726"
-                android:textColor="#FFF" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <Button
-                android:id="@+id/btn_nivel_3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nível 3"
-                android:background="#D6D6D6" />
+                    <TextView
+                        android:id="@+id/tv_nivel1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nivel_1"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/btn_nivel_4"
-                android:layout_width="0dp"
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_nivel_2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nível 4"
-                android:background="#D6D6D6" />
+                android:layout_marginHorizontal="8dp"
+                app:cardBackgroundColor="@color/neutral_light_300"
+                android:layout_weight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_nivel2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nivel_2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_nivel_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/neutral_light_300"
+                android:layout_marginHorizontal="8dp"
+                android:layout_weight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_nivel_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nivel_3"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_nivel_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/neutral_light_300"
+                android:layout_marginHorizontal="8dp"
+                android:layout_weight="1">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_nivel4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/nivel_4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+
         </LinearLayout>
 
         <!-- Local -->
@@ -107,8 +173,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Local"
-            android:textSize="16sp"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_local"
@@ -116,8 +182,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="CTzinho - Sala 118"
-            android:textSize="14sp"
-            android:textColor="#666" />
+            android:textColor="#666"
+            android:textSize="14sp" />
 
         <!-- Descrição -->
         <TextView
@@ -126,8 +192,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Descrição do Problema"
-            android:textSize="16sp"
-            android:textColor="#000" />
+            android:textColor="#000"
+            android:textSize="16sp" />
 
         <TextView
             android:id="@+id/tv_descricao"
@@ -135,8 +201,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:text="Muitas cadeiras da sala 118 estão danificadas, o que prejudica o conforto e a postura dos alunos e professores."
-            android:textSize="14sp"
-            android:textColor="#666" />
+            android:textColor="#666"
+            android:textSize="14sp" />
 
         <!-- Imagem -->
         <ImageView
@@ -145,39 +211,49 @@
             android:layout_height="200dp"
             android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/sample_image" />
+            android:src="@drawable/doguinha" />
 
         <!-- Botões -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp">
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
 
             <Button
                 android:id="@+id/btn_gerar_relatorio"
-                android:layout_width="0dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
                 android:layout_weight="1"
-                android:text="Gerar Relatório"
-                android:background="#D6D6D6" />
+                android:text="@string/gerar_relatorio"
+                android:backgroundTint="@color/neutral_mid_500"/>
 
             <Button
                 android:id="@+id/btn_salvar"
-                android:layout_width="0dp"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Salvar"
-                android:background="#D6D6D6" />
+                android:layout_marginHorizontal="8dp"
+                android:text="@string/salvar"
+                android:backgroundTint="@color/primary_green_500"/>
         </LinearLayout>
 
         <!-- Campo de mensagem -->
-        <EditText
-            android:id="@+id/et_mensagem"
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:hint="Envie uma mensagem..."
-            android:background="@drawable/doguinha" />
+            app:endIconDrawable="@drawable/bell_ringing"
+            android:hint="@string/envie_uma_mensagem">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/send"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 </ScrollView>

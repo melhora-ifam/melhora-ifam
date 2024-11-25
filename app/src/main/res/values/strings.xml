@@ -1,5 +1,13 @@
 <resources>
     <string name="app_name">melhoraIfam</string>
+    <string name="nivel_4">Nível 4</string>
+    <string name="nivel_3">Nível 3</string>
+    <string name="nivel_2">Nível 2</string>
+    <string name="nivel_1">Nível 1</string>
+    <string name="gerar_relatorio">Gerar Relatório</string>
+    <string name="salvar">Salvar</string>
+    <string name="envie_uma_mensagem">Envie uma mensagem...</string>
+    <string name="prioridade">Prioridade</string>
     <string-array  name='status_array'>
         <item>Aberto</item>
         <item>Em Andamento</item>
