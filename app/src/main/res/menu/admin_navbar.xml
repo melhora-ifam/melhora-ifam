@@ -8,7 +8,7 @@
         android:padding="0dp"/>
 
     <item android:title="@string/usuarios"
-        android:id="@+id/ocorrencias_navbar"
+        android:id="@+id/usuarios_navbar"
         android:icon="@drawable/group"
         android:layout_margin="0dp"
         android:padding="0dp"/>
