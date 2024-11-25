@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">melhoraIfam</string>
+    <string-array  name='status_array'>
+        <item>Aberto</item>
+        <item>Em Andamento</item>
+        <item>Concluído</item>
+    </string-array>
 </resources>
