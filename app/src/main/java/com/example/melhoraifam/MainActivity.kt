@@ -13,13 +13,11 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Configurar View Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Configurar clique do botão para carregar o fragmento de login
         binding.btnHome.setOnClickListener {
-            loadFragment(RedefinirSenhaFragment())
+            loadFragment(aberturaApp())
         }
     }
 
