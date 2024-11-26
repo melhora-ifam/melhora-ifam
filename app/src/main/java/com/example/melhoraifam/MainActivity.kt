@@ -12,12 +12,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        // Configurar View Binding
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        // Carregar os dois fragments simultaneamente
         loadFragment1(toolbar())
         loadFragment(registroDeOcorrenciaFragment())
     }
@@ -25,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadFragment1(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer1, fragment) // Atualizado com o novo ID
+        transaction.replace(R.id.fragmentContainer1, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
