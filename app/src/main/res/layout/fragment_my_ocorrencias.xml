@@ -20,7 +20,7 @@
             android:layout_weight="1"
             android:background="@drawable/rounded_background"
             android:iconifiedByDefault="false"
-            android:queryHint="@string/pesquisar_usuarios"
+            android:queryHint="@string/pesquisar_ocorrencias"
             app:layout_constraintBottom_toTopOf="@+id/layoutOcorrencias"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
