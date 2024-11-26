@@ -22,7 +22,7 @@
 
         <TextView
             android:id="@+id/warning"
-            android:layout_width="274dp"
+            android:layout_width="259dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
             android:layout_marginTop="8dp"
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="8dp"
             android:text="@string/titulo"
             android:textColor="@color/neutral_dark_900"
             android:textSize="18sp" />
@@ -46,8 +46,7 @@
             android:id="@+id/tituloOcorrencia"
             android:layout_width="328dp"
             android:layout_height="56dp"
-            android:layout_marginStart="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginStart="8dp"
             android:hint="@string/titulo_placeholder"
             android:inputType="text"
             android:padding="16dp"
@@ -58,7 +57,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="8dp"
             android:text="@string/local"
             android:textColor="@color/neutral_dark_900"
             android:textSize="18sp" />
@@ -68,7 +67,7 @@
             android:layout_width="328dp"
             android:layout_height="56dp"
             android:hint="@string/local"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="8dp"/>
 
         <TextView
             android:id="@+id/textView2"
@@ -77,7 +76,8 @@
             android:text="@string/local_especifico"
             android:textSize="18sp"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="8dp"
+            android:textColor="@color/neutral_dark_900"/>
 
         <EditText
             android:id="@+id/localEspecifico"
@@ -87,14 +87,14 @@
             android:inputType="text"
             android:padding="16dp"
             android:textColor="#000000"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="8dp"/>
 
         <TextView
             android:id="@+id/categoriaLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="8dp"
             android:text="@string/categoria"
             android:textColor="@color/neutral_dark_900"
             android:textSize="18sp" />
@@ -105,7 +105,7 @@
             android:layout_width="328dp"
             android:layout_height="56dp"
             android:hint="@string/categoria"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="8dp"/>
 
         <TextView
             android:id="@+id/descricaoLabel"
@@ -114,7 +114,8 @@
             android:layout_marginTop="16dp"
             android:text="@string/descricao"
             android:textSize="18sp"
-            android:layout_marginStart="30dp"/>
+            android:textColor="@color/neutral_dark_900"
+            android:layout_marginStart="8dp"/>
 
         <EditText
             android:id="@+id/descricao"
@@ -125,7 +126,7 @@
             android:gravity="start|top"
             android:hint="@string/descricao_placeholder"
             android:inputType="textMultiLine"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="8dp"/>
 
         <TextView
             android:id="@+id/imagemLabel"
@@ -134,7 +135,8 @@
             android:layout_marginTop="16dp"
             android:text="@string/imagem"
             android:textSize="18sp"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="8dp"
+            android:textColor="@color/neutral_dark_900"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -169,7 +171,7 @@
             android:backgroundTint="@color/primary_green_600"
             android:text="@string/enviar"
             android:textColor="@color/white"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="16dp" />
 
     </LinearLayout>
