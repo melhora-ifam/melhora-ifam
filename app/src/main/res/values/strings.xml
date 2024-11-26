@@ -24,4 +24,5 @@
     <string name="imagem_placeholder">Arquivo .png ou .jpeg</string>
     <string name="enviar">Enviar</string>
     <string name="registro_de_ocorrencia">Registro de Ocorrência</string>
+    <string name="warning">Certifique-se de que não há uma ocorrência similar registrada</string>
 </resources>

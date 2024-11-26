@@ -21,10 +21,22 @@
             android:layout_marginTop="0dp" />
 
         <TextView
+            android:id="@+id/warning"
+            android:layout_width="274dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="8dp"
+            android:background="#FBDB5A"
+            android:padding="5dp"
+            android:text="@string/warning"
+            android:textColor="@color/neutral_dark_900"
+            android:textSize="18sp" />
+
+        <TextView
             android:id="@+id/tituloLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:layout_marginStart="30dp"
             android:text="@string/titulo"
             android:textColor="@color/neutral_dark_900"
