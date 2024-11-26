@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, fragment) // Atualizado com o novo ID
+        transaction.replace(R.id.fragmentContainer, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
     }
