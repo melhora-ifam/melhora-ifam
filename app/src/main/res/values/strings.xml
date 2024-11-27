@@ -8,6 +8,15 @@
     <string name="salvar">Salvar</string>
     <string name="envie_uma_mensagem">Envie uma mensagem...</string>
     <string name="prioridade">Prioridade</string>
+    <string name="titulo_ocorrencia">Cadeiras Quebradas na Sala</string>
+    <string name="status_ocorrencia">Status da Ocorrência</string>
+    <string name="local">Local</string>
+    <string name="local_texto">CTzinho - Sala 118</string>
+    <string name="descricao_problema">Descrição do Problema</string>
+    <string name="descricao_problema_texto">Muitas cadeiras da sala 118 estão danificadas, o que prejudica o conforto e a postura dos alunos e professores.</string>
+    <string name="data_ocorrencia">01 nov 2024</string>
+    <string name="categoria">Categoria: Móveis</string>
+    <string name="numero_processo">n° 0001/2024</string>
     <string-array  name='status_array'>
         <item>Aberto</item>
         <item>Em Andamento</item>

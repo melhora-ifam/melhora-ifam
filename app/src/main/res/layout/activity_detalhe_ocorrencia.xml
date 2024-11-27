@@ -11,34 +11,73 @@
         android:layout_height="0dp"
         android:orientation="vertical">
 
-        <!-- Título e Data -->
-        <TextView
-            android:id="@+id/tv_titulo"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="4dp"
-            android:text="Cadeiras Quebradas na Sala"
-            android:textColor="#000"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:layout_marginBottom="4dp">
 
-        <TextView
-            android:id="@+id/tv_data_categoria"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/tv_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/data_ocorrencia"
+                android:textSize="14sp"
+                android:textColor="#666"
+                android:gravity="end"/>
+
+            <TextView
+                android:id="@+id/tv_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="3dp"
+                android:text="@string/titulo_ocorrencia"
+                android:textColor="#000"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="01 nov 2024    Categoria: Móveis"
-            android:textColor="#666"
-            android:textSize="14sp" />
+            android:layout_marginTop="1dp">
+
+            <TextView
+                android:id="@+id/tv_numero_processo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/numero_processo"
+                android:textColor="#000"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/tv_categoria"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/categoria"
+                android:textColor="#000"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
 
         <!-- Status da Ocorrência -->
         <TextView
-            android:id="@+id/tv_status_label"
+            android:id="@+id/tv_status_ocorrencia"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Status da Ocorrência"
-            android:textColor="#000"
-            android:textSize="16sp" />
+            android:layout_marginTop="10dp"
+            android:text="@string/status_ocorrencia"
+            android:textColor="#666"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
 
         <Spinner
             android:id="@+id/spinner_status"
@@ -56,10 +95,11 @@
             android:id="@+id/tv_prioridade"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="6dp"
             android:text="@string/prioridade"
-            android:textColor="#000"
-            android:textSize="16sp" />
+            android:textColor="#666"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -72,7 +112,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                app:cardBackgroundColor="@color/neutral_light_300"
+                app:cardBackgroundColor="@color/neutral_mid_500"
                 android:layout_weight="1">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -84,6 +124,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nivel_1"
+                        android:textColor="#FFF"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -96,7 +137,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="8dp"
-                app:cardBackgroundColor="@color/neutral_light_300"
+                app:cardBackgroundColor="#FFA500"
                 android:layout_weight="1">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -108,6 +149,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nivel_2"
+                        android:textColor="#FFF"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -119,7 +161,7 @@
                 android:id="@+id/card_nivel_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/neutral_light_300"
+                app:cardBackgroundColor="@color/neutral_mid_500"
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1">
 
@@ -132,6 +174,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nivel_3"
+                        android:textColor="#FFF"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -143,7 +186,7 @@
                 android:id="@+id/card_nivel_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/neutral_light_300"
+                app:cardBackgroundColor="@color/neutral_mid_500"
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1">
 
@@ -156,6 +199,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/nivel_4"
+                        android:textColor="#FFF"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -171,44 +215,46 @@
             android:id="@+id/tv_local_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Local"
-            android:textColor="#000"
-            android:textSize="16sp" />
+            android:layout_marginTop="10dp"
+            android:text="@string/local"
+            android:textColor="#666"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/tv_local"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="CTzinho - Sala 118"
-            android:textColor="#666"
-            android:textSize="14sp" />
+            android:text="@string/local_texto"
+            android:textColor="#000"
+            android:textSize="15sp" />
 
         <!-- Descrição -->
         <TextView
             android:id="@+id/tv_descricao_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Descrição do Problema"
-            android:textColor="#000"
-            android:textSize="16sp" />
+            android:layout_marginTop="10dp"
+            android:text="@string/descricao_problema"
+            android:textColor="#666"
+            android:textSize="17sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_descricao"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Muitas cadeiras da sala 118 estão danificadas, o que prejudica o conforto e a postura dos alunos e professores."
-            android:textColor="#666"
-            android:textSize="14sp" />
+            android:layout_marginTop="2dp"
+            android:text="@string/descricao_problema_texto"
+            android:textColor="#000"
+            android:textSize="15sp" />
 
         <!-- Imagem -->
         <ImageView
             android:id="@+id/iv_imagem"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="175dp"
             android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
             android:src="@drawable/doguinha" />
@@ -217,7 +263,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal">
 
             <Button
@@ -227,6 +273,7 @@
                 android:layout_marginHorizontal="8dp"
                 android:layout_weight="1"
                 android:text="@string/gerar_relatorio"
+                android:textSize="18sp"
                 android:backgroundTint="@color/neutral_mid_500"/>
 
             <Button
@@ -236,24 +283,27 @@
                 android:layout_weight="1"
                 android:layout_marginHorizontal="8dp"
                 android:text="@string/salvar"
+                android:textSize="18sp"
                 android:backgroundTint="@color/primary_green_500"/>
         </LinearLayout>
 
         <!-- Campo de mensagem -->
-
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
-            android:layout_marginTop="8dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:endIconDrawable="@drawable/bell_ringing"
-            android:hint="@string/envie_uma_mensagem">
+           style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+           android:layout_marginTop="4dp"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="@string/envie_uma_mensagem"
+            app:boxBackgroundMode="none"
+            app:boxStrokeWidthBottom="2dp"
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableEnd="@drawable/send"
-                />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+            app:boxStrokeColor="#FFA500">
+
+           <com.google.android.material.textfield.TextInputEditText
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:drawableEnd="@drawable/send"
+               />
+       </com.google.android.material.textfield.TextInputLayout>
+   </LinearLayout>
 </ScrollView>
