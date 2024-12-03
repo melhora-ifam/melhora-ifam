@@ -7,9 +7,12 @@
     <string name="usuarios">Usuários</string>
     <string name="perfil">Perfil</string>
     <string name="adicionar_ocorrencia">Adicionar ocorrência</string>
+    <string name="voltar">Voltar</string>
+    <string name="notificacoes">Notificações</string>
 
     <!-- Filtragens na homepage -->
     <string name="pesquisar_ocorrencias">Pesquisar ocorrências</string>
+    <string name="pesquisar_usuarios">Pesquisar usuários</string>
     <string name="mais_recentes">Mais recentes</string>
     <string name="por_local">Por local</string>
     <string name="por_status">Por status</string>
@@ -32,6 +35,15 @@
     <string name="prioridade2">Pr.2</string>
     <string name="prioridade3">Pr.3</string>
     <string name="prioridade4">Pr.4</string>
+
+    <!-- Itens do card de usuário -->
+    <string name="usuario">Nome do Usuário</string>
+    <string name="email">usuario@email.com</string>
+    <string name="telefone">(00) 00000–0000</string>
+    <string name="promover">Promover a administrador?</string>"
+    <string name="imagem_usuario">Imagem do Usuário</string>"
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
 
     <!-- Lorem Ipsum -->
     <string name="lipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
