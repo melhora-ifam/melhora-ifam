@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.example.melhoraifam"
         minSdk = 24
-        targetSdk = 35
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
