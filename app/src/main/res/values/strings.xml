@@ -2,6 +2,26 @@
     <!-- Nome do Aplicativo -->
     <string name="app_name">Melhora IFAM</string>
 
+    <!-- Autenticação -->
+    <string name="app_name">Melhora IFAM</string>
+    <string name="email_institucional">E-mail Institucional</string>
+    <string name="senha">Senha</string>
+    <string name="redefinir_senha">Recuperar a senha?</string>
+    <string name="logar">Entrar</string>
+    <string name="cadastro_mensagem">Não possui uma conta? Cadastre-se</string>
+    <string name="erro_login">*E-mail e/ou senha incorretos</string>
+    <string name="nome">Nome</string>
+    <string name="celular">Celular</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="senha_min_caract">Mínimo de 8 caracteres</string>
+    <string name="email_invalido">* E-mail inválido</string>
+    <string name="email_cadastrado">E-mail cadastrado</string>
+    <string name="nome_invalido">* Nome Inválido</string>
+    <string name="celular_invalido">* Celular inválido</string>
+    <string name="senha_invalido">* Senha Inválida</string>
+    <string name="voltar_login">Voltar</string>
+    <string name="enviar">Enviar</string>
+
     <!-- Navegação -->
     <string name="home">Página Inicial</string>
     <string name="ocorrencias">Ocorrências</string>
@@ -18,7 +38,6 @@
     <string name="promover">Promover a administrador?</string>
     <string name="sim">Sim</string>
     <string name="nao">Não</string>
-    <string name="enviar">Enviar</string>
     <string name="registro_de_ocorrencia">Registro de Ocorrência</string>
     <string name="warning">Certifique-se de que não há uma ocorrência similar registrada</string>
 
