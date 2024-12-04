@@ -1,28 +1,99 @@
 <resources>
-    <string name="app_name">melhoraIfam</string>
+    <!-- Nome do Aplicativo -->
+    <string name="app_name">Melhora IFAM</string>
+
+    <!-- Navegação -->
+    <string name="home">Página Inicial</string>
+    <string name="ocorrencias">Ocorrências</string>
+    <string name="usuarios">Usuários</string>
+    <string name="perfil">Perfil</string>
+    <string name="adicionar_ocorrencia">Adicionar ocorrência</string>
+    <string name="voltar">Voltar</string>
+    <string name="notificacoes">Notificações</string>
+
+    <!-- Ações -->
+    <string name="gerar_relatorio">Gerar Relatório</string>
+    <string name="salvar">Salvar</string>
+    <string name="envie_uma_mensagem">Envie uma mensagem…</string>
+    <string name="promover">Promover a administrador?</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="enviar">Enviar</string>
+    <string name="registro_de_ocorrencia">Registro de Ocorrência</string>
+    <string name="warning">Certifique-se de que não há uma ocorrência similar registrada</string>
+
+    <!-- Filtros e Pesquisa -->
+    <string name="pesquisar_ocorrencias">Pesquisar ocorrências</string>
+    <string name="pesquisar_usuarios">Pesquisar usuários</string>
+    <string name="mais_recentes">Mais recentes</string>
+    <string name="por_local">Por local</string>
+    <string name="por_status">Por status</string>
+    <string name="por_categoria">Por categoria</string>
+    <string name="por_prioridade">Por prioridade</string>
+    <string name="mais_recentes_txt">Ocorrências públicas - Mais recentes</string>
+    <string name="por_local_txt">Ocorrências públicas - Por local</string>
+    <string name="por_status_txt">Ocorrências públicas - Por status</string>
+    <string name="por_categoria_txt">Ocorrências públicas - Por categoria</string>
+    <string name="por_prioridade_txt">Ocorrências públicas - Por prioridade</string>
+
+    <!-- Ocorrências -->
     <string name="titulo">Título</string>
+    <string name="titulo_placeholder">Ex: Cadeiras Quebradas na Sala</string>
+    <string name="descricao">Descrição</string>
+    <string name="descricao_placeholder">Relate aqui...</string>
+    <string name="descricao_problema">Descrição do Problema</string>
+    <string name="descricao_problema_texto">Muitas cadeiras da sala 118 estão danificadas, o que prejudica o conforto e a postura dos alunos e professores.</string>
+    <string name="status_ocorrencia">Status da Ocorrência</string>
+    <string name="status">Status</string>
+    <string name="prioridade">Prioridade</string>
+    <string name="nivel_1">Nível 1</string>
+    <string name="nivel_2">Nível 2</string>
+    <string name="nivel_3">Nível 3</string>
+    <string name="nivel_4">Nível 4</string>
+    <string name="n1">N1</string>
+    <string name="n2">N2</string>
+    <string name="n3">N3</string>
+    <string name="n4">N4</string>
+    <string name="prioridade1">Pr.1</string>
+    <string name="prioridade2">Pr.2</string>
+    <string name="prioridade3">Pr.3</string>
+    <string name="prioridade4">Pr.4</string>
+    <string name="local">Local</string>
+    <string name="local_especifico">Local Específico</string>
+    <string name="local_especifico_placeholder">Ex: Sala 02</string>
+    <string name="local_texto">CTzinho - Sala 118</string>
+    <string name="categoria">Categoria</string>
+    <string name="categoria_options">Categoria: Móveis</string>
+    <string name="numero_processo">n° 0001/2024</string>
+    <string name="data_ocorrencia">01 nov 2024</string>
+    <string name="imagem">Imagem</string>
+    <string name="imagem_placeholder">Arquivo .png ou .jpeg</string>
+    <string name="notif">Mensagens</string>
+
+    <!-- Usuários -->
+    <string name="usuario">Nome do Usuário</string>
+    <string name="email">usuario@email.com</string>
+    <string name="telefone">(00) 00000–0000</string>
+    <string name="imagem_usuario">Imagem do Usuário</string>
+
+    <!-- Lorem Ipsum -->
+    <string name="lipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</string>
+
+    <!-- Arrays -->
     <string-array name="categoria_options">
         <item>Internet</item>
         <item>Energia</item>
         <item>Móveis</item>
-        <item>Eletrônicos </item>
-        <item>Água </item>
-        <item>Obras </item>
-        <item>Terreno </item>
-        <item>Iluminação </item>
-        <item>Outro </item>
+        <item>Eletrônicos</item>
+        <item>Água</item>
+        <item>Obras</item>
+        <item>Terreno</item>
+        <item>Iluminação</item>
+        <item>Outro</item>
     </string-array>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="titulo_placeholder">Ex: Cadeiras Quebradas na Sala</string>
-    <string name="local">Local</string>
-    <string name="local_especifico">Local Específico</string>
-    <string name="local_especifico_placeholder">Ex: Sala 02</string>
-    <string name="descricao">Descrição</string>
-    <string name="descricao_placeholder">Relate aqui ...</string>
-    <string name="imagem">Imagem</string>
-    <string name="categoria">Categoria</string>
-    <string name="imagem_placeholder">Arquivo .png ou .jpeg</string>
-    <string name="enviar">Enviar</string>
-    <string name="registro_de_ocorrencia">Registro de Ocorrência</string>
-    <string name="warning">Certifique-se de que não há uma ocorrência similar registrada</string>
+    <string-array name="status_array">
+        <item>Aberto</item>
+        <item>Em Andamento</item>
+        <item>Concluído</item>
+    </string-array>
 </resources>
