@@ -13,17 +13,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
 
-        // Configurar o botão para ir para o ChatActivity
-        val botaoChat: Button = findViewById(R.id.botaoChat)
-        botaoChat.setOnClickListener {
-            val intent = Intent(this, ChatActivity::class.java)
+        // Criando intent para ir para a home
+        val btnHome = findViewById<Button>(R.id.btnHome)
+        btnHome.setOnClickListener() {
+            val intent = Intent(this, Homepage::class.java)
             startActivity(intent)
         }
     }

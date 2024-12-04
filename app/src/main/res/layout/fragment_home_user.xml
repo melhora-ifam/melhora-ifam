@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/neutral_light_50"
+    tools:context=".HomeUserFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/barraPesquisa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.widget.SearchView
+                android:id="@+id/barraDePesquisaHomeAdmin"
+                android:layout_width="280dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:iconifiedByDefault="false"
+                android:background="@drawable/rounded_background"
+                android:queryHint="@string/pesquisar_ocorrencias" />
+
+            <ImageButton
+                android:id="@+id/filterButton"
+                android:layout_width="24dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/rounded_background"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/filter_alt" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textFiltragem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mais_recentes_txt"
+            android:textColor="@color/neutral_dark_700"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/barraPesquisa" />
+
+
+        <LinearLayout
+            android:id="@+id/layoutOcorrencias"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textFiltragem">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Ocorrencias"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/ocorrencia_card" />
+        </LinearLayout>
+
+        <!--<com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navBarHomeUser"
+            app:menu="@menu/bottom_navbar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/primary_green_600"
+            app:itemIconTint="@color/neutral_light_50"
+            app:itemTextColor="@color/neutral_light_50"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />-->
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAdicionarOcorrencia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:backgroundTint="@color/primary_teal_800"
+            android:contentDescription="@string/adicionar_ocorrencia"
+            android:tintMode="@color/neutral_light_50"
+            android:focusable="true"
+            android:clickable="true"
+            android:src="@drawable/add"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
