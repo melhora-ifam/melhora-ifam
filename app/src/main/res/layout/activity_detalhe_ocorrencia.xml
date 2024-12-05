@@ -31,7 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="3dp"
-                android:text="@string/titulo_ocorrencia"
+                android:text="@string/titulo_placeholder"
                 android:textColor="#000"
                 android:textSize="22sp"
                 android:textStyle="bold" />
@@ -295,8 +295,7 @@
            android:layout_height="wrap_content"
            android:hint="@string/envie_uma_mensagem"
             app:boxBackgroundMode="none"
-            app:boxStrokeWidthBottom="2dp"
-
+            app:boxStrokeWidth="2dp"
             app:boxStrokeColor="#FFA500">
 
            <com.google.android.material.textfield.TextInputEditText

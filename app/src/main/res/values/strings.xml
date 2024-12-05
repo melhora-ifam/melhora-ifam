@@ -3,7 +3,6 @@
     <string name="app_name">Melhora IFAM</string>
 
     <!-- Autenticação -->
-    <string name="app_name">Melhora IFAM</string>
     <string name="email_institucional">E-mail Institucional</string>
     <string name="senha">Senha</string>
     <string name="redefinir_senha">Recuperar a senha?</string>
