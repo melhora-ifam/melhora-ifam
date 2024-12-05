@@ -44,8 +44,14 @@ android {
 }
 
 dependencies {
+    // Conexão com o Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.6.0"))
     implementation("com.google.firebase:firebase-analytics")
+
+    // Autenticação
+    implementation("com.google.firebase:firebase-auth")
+
+    // As demais dependências
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

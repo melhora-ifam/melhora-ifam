@@ -1,8 +1,6 @@
 package com.example.melhoraifam
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -37,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 //        loadFragment1(toolbar())
-        loadFragment(login())
+        loadFragment(LoginFragment())
     }
 
 
