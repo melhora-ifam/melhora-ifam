@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "610443121033",
+    "firebase_url": "https://melhora-ifam-53faa-default-rtdb.firebaseio.com",
+    "project_id": "melhora-ifam-53faa",
+    "storage_bucket": "melhora-ifam-53faa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:610443121033:android:721dde4425d55a7b2fd158",
+        "android_client_info": {
+          "package_name": "com.example.melhoraifam"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGTUQmRI2leO9bUriV-dk5Vk336HOpayY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -26,18 +26,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Criando intent para ir para a home
-        val btnHome = findViewById<Button>(R.id.btnHome)
+        /*val btnHome = findViewById<Button>(R.id.btnHome)
         btnHome.setOnClickListener() {
             val intent = Intent(this, Homepage::class.java)
             startActivity(intent)
-        }
+        }*/
 
         // A PARTIR DAQUI, FUNÇÕES CRIADAS PELA JÚLIA
-        /*binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        loadFragment1(toolbar())
-        loadFragment(registroDeOcorrenciaFragment())*/
+//        loadFragment1(toolbar())
+        loadFragment(login())
     }
 
 
@@ -46,12 +46,12 @@ class MainActivity : AppCompatActivity() {
         transaction.replace(R.id.fragmentContainer1, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
-    }
+    }*/
 
     private fun loadFragment(fragment: Fragment) {
         val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, fragment)
+        transaction.replace(R.id.frameLayoutMain, fragment)
         transaction.addToBackStack(null)
         transaction.commit()
-    }*/
+    }
 }
