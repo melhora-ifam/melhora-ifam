@@ -9,7 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
+import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.replace
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -38,6 +41,7 @@ class LoginFragment : Fragment() {
         val emailEditText = view.findViewById<EditText>(R.id.email)
         val senhaEditText = view.findViewById<EditText>(R.id.senha)
         val buttonEntrar = view.findViewById<Button>(R.id.buttonLogin)
+        val tvCadastrarUsuario = view.findViewById<TextView>(R.id.cadastrar)
 
         buttonEntrar.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -61,6 +65,14 @@ class LoginFragment : Fragment() {
                 // E-mail válido
                 realizarLogin(email, senha)
             }
+        }
+
+        // Trocar de fragmento, caso queira cadastrar novo usuário
+        tvCadastrarUsuario.setOnClickListener() {
+            val cadastro: Fragment = CadastroFragment()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.frameLayoutMain, cadastro)
+            transaction.commit()
         }
 
         return view
