@@ -9,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.ktx.database
@@ -31,7 +30,7 @@ class CadastroFragment : Fragment() {
         val senhaEditText = view.findViewById<EditText>(R.id.senha)
         val cadastrarButton = view.findViewById<Button>(R.id.buttonCadastrar)
 
-        cadastrarButton.setOnClickListener() {
+        cadastrarButton.setOnClickListener {
             val nome = nomeEditText.text.toString()
             val email = emailEditText.text.toString()
             val celular = celularEditText.text.toString()
@@ -88,7 +87,7 @@ class CadastroFragment : Fragment() {
                             Toast.makeText(context, "Erro ao salvar dados no banco", Toast.LENGTH_SHORT).show()
                         }
                 } else {
-                    Toast.makeText(context, "Falha no cadastro...", Toast.LENGTH_SHORT,).show()
+                    Toast.makeText(context, "Falha no cadastro...", Toast.LENGTH_SHORT).show()
                 }
             }
     }

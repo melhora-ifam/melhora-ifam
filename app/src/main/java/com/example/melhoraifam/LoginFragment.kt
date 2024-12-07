@@ -12,7 +12,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.replace
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -42,6 +41,7 @@ class LoginFragment : Fragment() {
         val senhaEditText = view.findViewById<EditText>(R.id.senha)
         val buttonEntrar = view.findViewById<Button>(R.id.buttonLogin)
         val tvCadastrarUsuario = view.findViewById<TextView>(R.id.cadastrar)
+        val tvRecuperarSenha = view.findViewById<TextView>(R.id.recuperarSenha)
 
         buttonEntrar.setOnClickListener {
             val email = emailEditText.text.toString()
@@ -51,7 +51,6 @@ class LoginFragment : Fragment() {
             val emailVazio = email.isEmpty()
             val senhaVazia = senha.isEmpty()
             val emailValido = Patterns.EMAIL_ADDRESS.matcher(email).matches()
-            val dominioIFAM = email.endsWith("@ifam.edu.br")
 
             if (emailVazio) {
                 Toast.makeText(context, "O e-mail não pode estar vazio", Toast.LENGTH_SHORT).show()
@@ -59,19 +58,25 @@ class LoginFragment : Fragment() {
                 Toast.makeText(context, "Por favor insira uma senha", Toast.LENGTH_SHORT).show()
             } else if (! emailValido){
                 Toast.makeText(context, "Formato de e-mail inválido", Toast.LENGTH_SHORT).show()
-            } /*else if (! dominioIFAM){
-                Toast.makeText(context, "E-mail deve pertencer ao domínio do IFAM", Toast.LENGTH_SHORT).show()
-            }*/ else {
+            } else {
                 // E-mail válido
                 realizarLogin(email, senha)
             }
         }
 
         // Trocar de fragmento, caso queira cadastrar novo usuário
-        tvCadastrarUsuario.setOnClickListener() {
+        tvCadastrarUsuario.setOnClickListener {
             val cadastro: Fragment = CadastroFragment()
             val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
             transaction.replace(R.id.frameLayoutMain, cadastro)
+            transaction.commit()
+        }
+
+        // Recuperar a senha
+        tvRecuperarSenha.setOnClickListener {
+            val recuperacao: Fragment = RedefinirSenhaFragment()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.frameLayoutMain, recuperacao)
             transaction.commit()
         }
 
@@ -82,11 +87,11 @@ class LoginFragment : Fragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    val user = auth.currentUser
+                    // val user = auth.currentUser
                     val intent = Intent(requireContext(), Homepage::class.java)
                     startActivity(intent)
                 } else {
-                    Toast.makeText(context, "E-mail ou senha incorretos", Toast.LENGTH_SHORT,).show()
+                    Toast.makeText(context, "E-mail ou senha incorretos", Toast.LENGTH_SHORT).show()
                 }
             }
     }
