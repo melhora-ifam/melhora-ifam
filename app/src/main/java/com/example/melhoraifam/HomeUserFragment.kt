@@ -1,10 +1,12 @@
 package com.example.melhoraifam
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.SearchView
@@ -13,6 +15,7 @@ import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.melhoraifam.databinding.ActivityHomepageBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 private const val ARG_PARAM1 = "param1"
@@ -22,6 +25,7 @@ private const val ARG_PARAM2 = "param2"
  * Fragmento da HomePage com a visão de USUÁRIO
  */
 class HomeUserFragment : Fragment() {
+    private lateinit var binding : ActivityHomepageBinding
     private var param1: String? = null
     private var param2: String? = null
 
@@ -51,9 +55,14 @@ class HomeUserFragment : Fragment() {
 
         // Lógica do FAB
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAdicionarOcorrencia)
-        fab.setOnClickListener() {
-            Toast.makeText(context, "Adicionando ocorrência...", Toast.LENGTH_SHORT).show()
+        fab.setOnClickListener {
+            val fragment = registroDeOcorrenciaFragment()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.frameLayoutHome, fragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
+
 
         // Lógica da barra de pesquisa
         val search = view.findViewById<SearchView>(R.id.barraDePesquisaHomeAdmin)

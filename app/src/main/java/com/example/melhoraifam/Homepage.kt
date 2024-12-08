@@ -20,7 +20,7 @@ class Homepage : AppCompatActivity() {
 
         binding = ActivityHomepageBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        replaceFragment(HomeAdminFragment())
+        replaceFragment(HomeUserFragment())
 
         val notificacoes = findViewById<ImageView>(R.id.sininho)
         var currentIcon = true
