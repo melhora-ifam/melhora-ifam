@@ -7,7 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class OcorrenciaAdapter(private val ocorrenciasList: ArrayList<OcorrenciaModel>) : RecyclerView.Adapter<OcorrenciaAdapter.OcorrenciaViewHolder>() {
+class OcorrenciaAdapter(private val ocorrenciasList: MutableList<OcorrenciaModel>) : RecyclerView.Adapter<OcorrenciaAdapter.OcorrenciaViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OcorrenciaAdapter.OcorrenciaViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.ocorrencia_card, parent, false)
         return OcorrenciaViewHolder(itemView)
@@ -21,7 +21,6 @@ class OcorrenciaAdapter(private val ocorrenciasList: ArrayList<OcorrenciaModel>)
         holder.prioridade.text = ocorrencia.prioridade
         holder.local.text = ocorrencia.local
         holder.categoria.text = ocorrencia.categoria
-        holder.imagem.setImageResource(ocorrencia.imagem)
     }
 
     override fun getItemCount(): Int {
