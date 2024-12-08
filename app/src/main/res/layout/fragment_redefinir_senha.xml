@@ -38,6 +38,7 @@
         android:background="@color/neutral_light_300"
         android:drawableStart="@drawable/email"
         android:drawablePadding="10dp"
+        android:paddingHorizontal="8dp"
         android:ems="10"
         android:hint="@string/email_cadastrado"
         android:inputType="textEmailAddress"
@@ -48,20 +49,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.499" />
-
-    <TextView
-        android:id="@+id/recuperarSenha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="272dp"
-        android:text="@string/redefinir_senha"
-        android:textColor="@color/neutral_mid_600"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/email"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
-        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonEnviar"
@@ -77,19 +64,6 @@
         app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonVoltar"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/erroLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/email_invalido"
-        android:textColor="@color/error_dark_900"
-        app:layout_constraintBottom_toTopOf="@+id/buttonEnviar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/email"
-        app:layout_constraintTop_toBottomOf="@+id/email"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
