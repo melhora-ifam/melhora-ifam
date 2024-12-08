@@ -38,9 +38,11 @@
         android:background="@color/neutral_light_300"
         android:drawableStart="@drawable/person"
         android:drawablePadding="10dp"
+        android:paddingHorizontal="8dp"
         android:ems="10"
         android:hint="@string/email_institucional"
         android:inputType="textEmailAddress"
+        android:textColor="@color/black"
         android:textColorHint="@color/neutral_dark_900"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,9 +58,11 @@
         android:background="@color/neutral_light_300"
         android:drawableStart="@drawable/senha_icon"
         android:drawablePadding="10dp"
+        android:paddingHorizontal="8dp"
         android:ems="10"
         android:hint="@string/senha"
         android:inputType="textPassword"
+        android:textColor="@color/black"
         android:textColorHint="@color/neutral_dark_900"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -106,19 +110,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/erroLogin"
-        android:layout_width="183dp"
-        android:layout_height="36dp"
-        android:text="@string/erro_login"
-        android:textColor="@color/error_dark_900"
-        app:layout_constraintBottom_toTopOf="@+id/buttonLogin"
-        app:layout_constraintEnd_toStartOf="@+id/recuperarSenha"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/senha"
-        app:layout_constraintTop_toBottomOf="@+id/senha"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
