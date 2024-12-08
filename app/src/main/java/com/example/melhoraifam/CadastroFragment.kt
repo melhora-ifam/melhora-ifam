@@ -71,7 +71,8 @@ class CadastroFragment : Fragment() {
                     val userMap = mapOf(
                         "nome" to nome,
                         "email" to email,
-                        "celular" to celular
+                        "celular" to celular,
+                        "admin" to false
                     )
 
                     userRef.setValue(userMap)

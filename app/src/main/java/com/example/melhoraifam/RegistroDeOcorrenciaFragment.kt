@@ -14,11 +14,10 @@ private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
 /**
- * A simple [Fragment] subclass.
- * Use the [registroDeOcorrencia.newInstance] factory method to
- * create an instance of this fragment.
+ * Inclui a lógica de incluir uma nova
+ * ocorrência no banco de dados
  */
-class registroDeOcorrenciaFragment : Fragment() {
+class RegistroDeOcorrenciaFragment : Fragment() {
 
     // Definir parâmetros, se necessário
     private var param1: String? = null
@@ -32,10 +31,7 @@ class registroDeOcorrenciaFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflar o layout para este fragmento
         val view = inflater.inflate(R.layout.fragment_registro_de_ocorrencia, container, false)
 
@@ -61,7 +57,7 @@ class registroDeOcorrenciaFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            registroDeOcorrenciaFragment().apply {
+            RegistroDeOcorrenciaFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

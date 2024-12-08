@@ -2,6 +2,7 @@ package com.example.melhoraifam
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -24,16 +25,22 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
+        Log.d("LoginFragment", "onStart chamado")
         // Verifica se o usuário já está logado, e se sim, redireciona para a Homepage
         val currentUser = auth.currentUser
         if (currentUser != null) {
+            Log.d("LoginFragment", "Usuário já logado: ${currentUser.email}")
             val intent = Intent(requireContext(), Homepage::class.java)
             startActivity(intent)
+        } else {
+            Log.d("LoginFragment", "Nenhum usuário logado")
         }
 
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        Log.d("LoginFragment", "onCreateView chamado")
+
         val view = inflater.inflate(R.layout.fragment_login, container, false)
         auth = Firebase.auth
 
@@ -87,10 +94,12 @@ class LoginFragment : Fragment() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(requireActivity()) { task ->
                 if (task.isSuccessful) {
-                    // val user = auth.currentUser
+                    val user = auth.currentUser
+                    Log.d("LoginFragment", "Login bem-sucedido para: ${user?.email}")
                     val intent = Intent(requireContext(), Homepage::class.java)
                     startActivity(intent)
                 } else {
+                    Log.e("LoginFragment", "Erro ao fazer login")
                     Toast.makeText(context, "E-mail ou senha incorretos", Toast.LENGTH_SHORT).show()
                 }
             }

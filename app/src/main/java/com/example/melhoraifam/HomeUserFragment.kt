@@ -1,20 +1,16 @@
 package com.example.melhoraifam
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.PopupMenu
 import android.widget.SearchView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.melhoraifam.databinding.ActivityHomepageBinding
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -56,7 +52,7 @@ class HomeUserFragment : Fragment() {
         // Lógica do FAB
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAdicionarOcorrencia)
         fab.setOnClickListener {
-            val fragment = registroDeOcorrenciaFragment()
+            val fragment = RegistroDeOcorrenciaFragment()
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.frameLayoutHome, fragment)
             transaction.addToBackStack(null)

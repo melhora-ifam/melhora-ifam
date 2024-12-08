@@ -38,11 +38,6 @@ class HomeAdminFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home_admin, container, false)
         Log.d("HomeAdminFragment", "onCreateView: Layout carregado");
 
-        val bottomNavBar = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navbar)
-        bottomNavBar.menu.clear()
-        bottomNavBar.inflateMenu(R.menu.admin_navbar)
-
-
         // Lógica do RecyclerView
         val recyclerView = view.findViewById<RecyclerView>(R.id.Ocorrencias)
         recyclerView.layoutManager = LinearLayoutManager(context)
@@ -115,6 +110,7 @@ class HomeAdminFragment : Fragment() {
 
 
         // Lógica do navBar
+        val bottomNavBar = requireActivity().findViewById<com.google.android.material.bottomnavigation.BottomNavigationView>(R.id.bottom_navbar)
         bottomNavBar.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home_navbar -> {
