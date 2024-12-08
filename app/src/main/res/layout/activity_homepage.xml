@@ -39,9 +39,12 @@
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_gravity="end"
+            android:clickable="true"
+            android:focusable="true"
             android:layout_marginHorizontal="16dp"
             app:srcCompat="@drawable/bell"
-            app:tint="@color/neutral_light_100" />
+            app:tint="@color/neutral_light_100"
+            />
 
     </androidx.appcompat.widget.Toolbar>
 

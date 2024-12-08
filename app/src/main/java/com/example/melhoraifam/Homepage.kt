@@ -1,5 +1,6 @@
 package com.example.melhoraifam
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
@@ -31,7 +32,14 @@ class Homepage : AppCompatActivity() {
                 notificacoes.setImageResource(R.drawable.bell)
             }
             currentIcon = !currentIcon
+
+            // abre a tela de notificação
+
+            val intent = Intent(this, ActivityNotificacao::class.java)
+            startActivity(intent)
         }
+
+
 
         // Adicionar aqui a lógica de trocar de fragmento
 
