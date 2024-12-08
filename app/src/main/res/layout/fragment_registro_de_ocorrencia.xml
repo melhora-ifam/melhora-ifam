@@ -126,7 +126,7 @@
         <EditText
             android:id="@+id/descricao"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:ems="10"
             android:gravity="start|top"
