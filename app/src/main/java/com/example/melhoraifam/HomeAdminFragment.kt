@@ -118,7 +118,10 @@ class HomeAdminFragment : Fragment() {
         bottomNavBar.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home_navbar -> {
-                    Toast.makeText(context, "Homepage", Toast.LENGTH_SHORT).show()
+                    val home: Fragment = HomeAdminFragment()
+                    val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                    transaction.replace(R.id.frameLayoutHome, home)
+                    transaction.commit()
                     true
                 }
                 R.id.usuarios_navbar -> {
@@ -129,7 +132,10 @@ class HomeAdminFragment : Fragment() {
                     true
                 }
                 R.id.perfil_navbar -> {
-                    Toast.makeText(context, "Perfil do usuário", Toast.LENGTH_SHORT).show()
+                    val perfilFragment: Fragment = PerfilFragment()
+                    val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                    transaction.replace(R.id.frameLayoutHome, perfilFragment)
+                    transaction.commit()
                     true
                 }
                 else -> false

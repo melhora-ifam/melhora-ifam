@@ -66,13 +66,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/primary_green_600"
-            app:title="Usuário"
-            app:titleTextColor="@color/neutral_light_50" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -232,18 +225,6 @@
 
     </LinearLayout>
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navBarHomeAdmin"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@color/primary_green_600"
-        app:itemIconTint="@color/neutral_light_50"
-        app:itemTextColor="@color/neutral_light_50"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navbar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
