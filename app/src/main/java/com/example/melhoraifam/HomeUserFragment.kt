@@ -170,6 +170,11 @@ class HomeUserFragment : Fragment() {
                     }
                     adapter = OcorrenciaAdapter(ocorrenciasList)
                     ocorrenciasRecyclerView.adapter = adapter
+                    adapter.setOnItemClickListener(object: OcorrenciaAdapter.OnItemClickListener{
+                        override fun onItemClick(position: Int) {
+                            Toast.makeText(context, "Card nº $position selecionado", Toast.LENGTH_SHORT).show()
+                        }
+                    })
                 }
             }
 

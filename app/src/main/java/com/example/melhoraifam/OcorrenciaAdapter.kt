@@ -8,9 +8,20 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class OcorrenciaAdapter(private val ocorrenciasList: MutableList<OcorrenciaModel>) : RecyclerView.Adapter<OcorrenciaAdapter.OcorrenciaViewHolder>() {
+    private lateinit var mListener: OnItemClickListener
+
+    interface OnItemClickListener {
+        fun onItemClick(position: Int)
+    }
+
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        mListener = listener
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OcorrenciaAdapter.OcorrenciaViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.ocorrencia_card, parent, false)
-        return OcorrenciaViewHolder(itemView)
+        return OcorrenciaViewHolder(itemView, mListener)
     }
 
     override fun onBindViewHolder(holder: OcorrenciaAdapter.OcorrenciaViewHolder, position: Int) {
@@ -27,7 +38,7 @@ class OcorrenciaAdapter(private val ocorrenciasList: MutableList<OcorrenciaModel
         return ocorrenciasList.size
     }
 
-    class OcorrenciaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class OcorrenciaViewHolder(itemView: View, listener: OnItemClickListener) : RecyclerView.ViewHolder(itemView) {
         val titulo = itemView.findViewById<TextView>(R.id.titulo_ocorrencia)
         val descricao = itemView.findViewById<TextView>(R.id.descricao_ocorrencia)
         val status = itemView.findViewById<TextView>(R.id.card_status_txt)
@@ -35,5 +46,11 @@ class OcorrenciaAdapter(private val ocorrenciasList: MutableList<OcorrenciaModel
         val local = itemView.findViewById<TextView>(R.id.card_local_txt)
         val categoria = itemView.findViewById<TextView>(R.id.card_categoria_txt)
         val imagem = itemView.findViewById<ImageView>(R.id.imagem_ocorrencia)
+
+        init {
+            itemView.setOnClickListener() {
+                listener.onItemClick(adapterPosition)
+            }
+        }
     }
 }
