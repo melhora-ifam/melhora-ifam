@@ -25,7 +25,8 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
         // Elementos alteráveis pelo admin
         val spinner_status = findViewById<Spinner>(R.id.spinner_status)
         val card_nivel_1 = findViewById<CardView>(R.id.card_nivel_1)
-        val card_nivel_2 = findViewById<CardView>(R.id.card_nivel_3)
+        val card_nivel_2 = findViewById<CardView>(R.id.card_nivel_2)
+        val card_nivel_3 = findViewById<CardView>(R.id.card_nivel_3)
         val card_nivel_4 = findViewById<CardView>(R.id.card_nivel_4)
 
         // Botões de ação

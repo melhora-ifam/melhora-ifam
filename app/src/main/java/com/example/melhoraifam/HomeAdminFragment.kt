@@ -1,5 +1,6 @@
 package com.example.melhoraifam
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -139,6 +140,7 @@ class HomeAdminFragment : Fragment() {
         return view
     }
 
+    // Lógica de recuperar ocorrências no Firebase
     private fun recuperarOcorrencias() {
         database.child("ocorrencias").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -150,11 +152,15 @@ class HomeAdminFragment : Fragment() {
                             ocorrenciasList.add(ocorrencia)
                         }
                     }
-                    adapter = OcorrenciaAdapter(ocorrenciasList)
+                    adapter = OcorrenciaAdapter(ocorrenciasList) // Adiciona as ocorrências no adapter
                     ocorrenciasRecyclerView.adapter = adapter
+
+                    // Adiciona interatividade nos cards
                     adapter.setOnItemClickListener(object: OcorrenciaAdapter.OnItemClickListener{
                         override fun onItemClick(position: Int) {
                             Toast.makeText(context, "Card nº $position selecionado", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(requireContext(), ActivityDetalheOcorrencia::class.java)
+                            startActivity(intent)
                         }
                     })
                 }
