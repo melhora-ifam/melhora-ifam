@@ -109,6 +109,18 @@
         <item>Iluminação</item>
         <item>Outro</item>
     </string-array>
+
+    <string-array name="local_options">
+        <item>Aranouá</item>
+        <item>Biblioteca</item>
+        <item>BioInova</item>
+        <item>CT</item>
+        <item>CTzinho</item>
+        <item>DILOG</item>
+        <item>LG Academy</item>
+        <item>NAPNE</item>
+    </string-array>
+
     <string-array name="status_array">
         <item>Aberto</item>
         <item>Em Andamento</item>

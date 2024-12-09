@@ -1,4 +1,8 @@
 package com.example.melhoraifam
 
-data class OcorrenciaModel(var imagem: Int, var titulo: String, var descricao: String,
-                           var status: String, var prioridade: String, var local: String, var categoria: String)
+data class OcorrenciaModel(var categoria: String, var descricao: String, var imagem: String,
+                           var local: String, var localEspecifico: String, var prioridade: String,
+                           var status: String, var titulo: String) {
+    constructor() : this("", "", "","",
+        "", "", "", "")
+}

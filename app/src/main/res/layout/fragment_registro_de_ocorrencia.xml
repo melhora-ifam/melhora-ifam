@@ -4,13 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".registroDeOcorrenciaFragment"
+    tools:context=".RegistroDeOcorrenciaFragment"
     android:background="@color/white">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         android:orientation="vertical">
 
         <FrameLayout
@@ -18,19 +19,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="0dp" />
+            android:layout_marginTop="8dp" />
 
-        <TextView
-            android:id="@+id/warning"
-            android:layout_width="259dp"
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="8dp"
-            android:background="#FBDB5A"
-            android:padding="5dp"
-            android:text="@string/warning"
-            android:textColor="@color/neutral_dark_900"
-            android:textSize="18sp" />
+            app:cardBackgroundColor="@color/warning_light_500"
+            app:cardCornerRadius="16dp">
+
+            <TextView
+                android:id="@+id/warning"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginVertical="8dp"
+                android:text="@string/warning"
+                android:textColor="@color/neutral_dark_900"
+                android:textSize="16sp" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/tituloLabel"
@@ -44,9 +50,9 @@
 
         <EditText
             android:id="@+id/tituloOcorrencia"
-            android:layout_width="328dp"
+            android:layout_width="match_parent"
             android:layout_height="56dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginHorizontal="8dp"
             android:hint="@string/titulo_placeholder"
             android:inputType="text"
             android:padding="16dp"
@@ -57,20 +63,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginHorizontal="8dp"
             android:text="@string/local"
             android:textColor="@color/neutral_dark_900"
             android:textSize="18sp" />
 
         <Spinner
             android:id="@+id/local"
-            android:layout_width="328dp"
+            android:layout_width="match_parent"
             android:layout_height="56dp"
             android:hint="@string/local"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginHorizontal="8dp"/>
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/local_especifico_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/local_especifico"
@@ -80,14 +86,14 @@
             android:textColor="@color/neutral_dark_900"/>
 
         <EditText
-            android:id="@+id/localEspecifico"
-            android:layout_width="328dp"
+            android:id="@+id/local_especifico_input"
+            android:layout_width="match_parent"
             android:layout_height="56dp"
             android:hint="@string/local_especifico_placeholder"
             android:inputType="text"
             android:padding="16dp"
             android:textColor="#000000"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginHorizontal="8dp"/>
 
         <TextView
             android:id="@+id/categoriaLabel"
@@ -102,10 +108,10 @@
 
         <Spinner
             android:id="@+id/categoria"
-            android:layout_width="328dp"
+            android:layout_width="match_parent"
             android:layout_height="56dp"
             android:hint="@string/categoria"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginHorizontal="8dp"/>
 
         <TextView
             android:id="@+id/descricaoLabel"
@@ -119,14 +125,14 @@
 
         <EditText
             android:id="@+id/descricao"
-            android:layout_width="328dp"
-            android:layout_height="80dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:ems="10"
             android:gravity="start|top"
             android:hint="@string/descricao_placeholder"
             android:inputType="textMultiLine"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginHorizontal="8dp"/>
 
         <TextView
             android:id="@+id/imagemLabel"
@@ -150,14 +156,13 @@
                 android:id="@+id/imageView"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginStart="30dp"
                 android:src="@drawable/foto" />
 
             <TextView
                 android:id="@+id/imageText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="24dp"
                 android:text="Arquivo PNG ou JPG"
                 android:textSize="16sp"
                 android:textColor="@color/neutral_dark_900" />
@@ -168,11 +173,11 @@
             android:id="@+id/buttonEnviar"
             android:layout_width="328dp"
             android:layout_height="48dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
             android:backgroundTint="@color/primary_green_600"
             android:text="@string/enviar"
-            android:textColor="@color/white"
-            android:layout_marginStart="45dp"
-            android:layout_marginTop="16dp" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 
