@@ -56,6 +56,7 @@
 
     <!-- Ocorrências -->
     <string name="titulo">Título</string>
+    <string name="autor_da_ocorrencia">Autor da ocorrẽncia</string>
     <string name="titulo_placeholder">Ex: Cadeiras Quebradas na Sala</string>
     <string name="descricao">Descrição</string>
     <string name="descricao_placeholder">Relate aqui…</string>

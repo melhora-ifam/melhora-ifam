@@ -49,7 +49,9 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
             checkAdminStatus(currentUser) { isAdminResult ->
                 isAdmin = isAdminResult
                 Log.d("Detalhes", "Admin? $isAdmin")
-                grantAdminPrivileges()
+                if (isAdmin) {
+                    grantAdminPrivileges()
+                }
             }
         }
 
@@ -59,6 +61,8 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
         val tv_data = findViewById<TextView>(R.id.tv_data)
         val tv_local = findViewById<TextView>(R.id.tv_local)
         val tv_descricao = findViewById<TextView>(R.id.tv_descricao)
+        val tv_categoria = findViewById<TextView>(R.id.tv_categoria)
+        val tv_autor = findViewById<TextView>(R.id.tv_autor)
 
         // Botões de ação
         val btn_gerar_relatorio = findViewById<Button>(R.id.btn_gerar_relatorio)
@@ -73,12 +77,15 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val ocorrencia = snapshot.getValue(OcorrenciaModel::class.java)
                     if (ocorrencia != null) {
-                        tv_numero_processo.text = idOcorrencia.toString()
+                        val numeroProcessoText = "ID: ${idOcorrencia.toString()}"
+                        tv_numero_processo.text = numeroProcessoText
                         tv_data.text = ocorrencia.data
                         tv_titulo.text = ocorrencia.titulo
                         val localText = "${ocorrencia.local} - ${ocorrencia.localEspecifico}"
                         tv_local.text = localText
                         tv_descricao.text = ocorrencia.descricao
+                        tv_categoria.text = ocorrencia.categoria
+                        tv_autor.text = ocorrencia.autor
 
                         prioridade = ocorrencia.prioridade
                         definirPrioridade(prioridade)

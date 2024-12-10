@@ -36,6 +36,12 @@
                 android:textColor="#000"
                 android:textSize="22sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_autor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/autor_da_ocorrencia" />
         </LinearLayout>
 
 
