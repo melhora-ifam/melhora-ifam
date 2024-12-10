@@ -1,8 +1,11 @@
 package com.example.melhoraifam
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.Toast
@@ -29,7 +32,7 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+        // enableEdgeToEdge()
         setContentView(R.layout.activity_detalhe_ocorrencia)
 
         // Recuperando o ID da ocorrência:
@@ -42,6 +45,11 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
         cardNivel3 = findViewById<CardView>(R.id.card_nivel_3)
         cardNivel4 = findViewById<CardView>(R.id.card_nivel_4)
 
+        // Botões de ação
+        val btn_gerar_relatorio = findViewById<Button>(R.id.btn_gerar_relatorio)
+        val btn_salvar = findViewById<Button>(R.id.btn_salvar)
+        Log.d("Detalhes", "Admin? $isAdmin")
+
         // Verificando se é admin:
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
@@ -51,6 +59,10 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
                 Log.d("Detalhes", "Admin? $isAdmin")
                 if (isAdmin) {
                     grantAdminPrivileges()
+                } else {
+                    btn_salvar.visibility = View.GONE
+                    btn_gerar_relatorio.visibility = View.GONE
+                    spinner_status.visibility = View.GONE
                 }
             }
         }
@@ -59,15 +71,12 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
         val tv_numero_processo = findViewById<TextView>(R.id.tv_numero_processo)
         val tv_titulo = findViewById<TextView>(R.id.tv_titulo)
         val tv_data = findViewById<TextView>(R.id.tv_data)
+        val tv_status = findViewById<TextView>(R.id.status)
         val tv_local = findViewById<TextView>(R.id.tv_local)
         val tv_descricao = findViewById<TextView>(R.id.tv_descricao)
         val tv_categoria = findViewById<TextView>(R.id.tv_categoria)
         val tv_autor = findViewById<TextView>(R.id.tv_autor)
 
-        // Botões de ação
-        val btn_gerar_relatorio = findViewById<Button>(R.id.btn_gerar_relatorio)
-        val btn_salvar = findViewById<Button>(R.id.btn_salvar)
-        Log.d("Detalhes", "Admin? $isAdmin")
 
 
         // Definindo os dados da ocorrência na activity:
@@ -81,6 +90,7 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
                         tv_numero_processo.text = numeroProcessoText
                         tv_data.text = ocorrencia.data
                         tv_titulo.text = ocorrencia.titulo
+                        tv_status.text = ocorrencia.status
                         val localText = "${ocorrencia.local} - ${ocorrencia.localEspecifico}"
                         tv_local.text = localText
                         tv_descricao.text = ocorrencia.descricao
@@ -96,6 +106,13 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
                     Toast.makeText(this@ActivityDetalheOcorrencia, "Erro ao carregar os dados da ocorrência", Toast.LENGTH_SHORT).show()
                 }
             })
+        }
+
+        // Lógica do Toolbar
+        val logo_ifam = findViewById<ImageView>(R.id.logo_ifam)
+        logo_ifam.setOnClickListener {
+            val intent = Intent(this, Homepage::class.java)
+            startActivity(intent)
         }
     }
 
@@ -151,6 +168,11 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
     }
 
     private fun grantAdminPrivileges() {
+        // Trocar o text view pelo spinner
+        val tv_status = findViewById<TextView>(R.id.status)
+        tv_status.visibility = View.GONE
+
+        // Deixar os botões de prioridade interagíveis
         val cardViews = mapOf(
             cardNivel1 to "N1",
             cardNivel2 to "N2",
