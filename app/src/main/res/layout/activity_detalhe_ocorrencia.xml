@@ -259,10 +259,10 @@
         <ImageView
             android:id="@+id/iv_imagem"
             android:layout_width="match_parent"
-            android:layout_height="175dp"
+            android:layout_height="240dp"
             android:layout_marginTop="8dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/doguinha" />
+            android:src="@drawable/placeholder_view_vector" />
 
         <!-- Botões -->
         <LinearLayout

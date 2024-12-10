@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
 class OcorrenciaAdapter(
@@ -40,6 +42,13 @@ class OcorrenciaAdapter(
             val id = idsList[position]
             mListener.onItemClick(id)
         }
+
+        when (ocorrencia.prioridade) {
+            "N1" -> holder.prioridadeCard.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.error_mid_800))
+            "N2" -> holder.prioridadeCard.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.warning_dark_900))
+            "N3" -> holder.prioridadeCard.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.warning_light_400))
+            "N4" -> holder.prioridadeCard.setCardBackgroundColor(ContextCompat.getColor(holder.itemView.context, R.color.primary_light_green_300))
+        }
     }
 
     override fun getItemCount(): Int {
@@ -54,6 +63,7 @@ class OcorrenciaAdapter(
         val local = itemView.findViewById<TextView>(R.id.card_local_txt)
         val categoria = itemView.findViewById<TextView>(R.id.card_categoria_txt)
         val imagem = itemView.findViewById<ImageView>(R.id.imagem_ocorrencia)
+        val prioridadeCard = itemView.findViewById<CardView>(R.id.prioridade_card)
 
         /*init {
             itemView.setOnClickListener() {

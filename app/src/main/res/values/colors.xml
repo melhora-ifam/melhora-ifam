@@ -42,16 +42,17 @@
     <color name="success_off_white_50">#F1F8E9</color>
 
     <!-- Cores de Erro -->
-    <color name="error_dark_900">#B71C1C</color>
-    <color name="error_mid_800">#C62828</color>
-    <color name="error_mid_700">#D32F2F</color>
-    <color name="error_light_600">#E53935</color>
-    <color name="error_light_500">#F44336</color>
-    <color name="error_light_400">#EF5350</color>
-    <color name="error_pale_300">#E57373</color>
-    <color name="error_pale_200">#EF9A9A</color>
-    <color name="error_pale_100">#FFCDD2</color>
-    <color name="error_off_white_50">#FFEBEE</color>
+    <color name="error_dark_900">#8B0000</color> <!-- Redefinição para um tom de vermelho bem escuro e saturado -->
+    <color name="error_mid_800">#A40000</color> <!-- Um vermelho vivo e intenso -->
+    <color name="error_mid_700">#BF0000</color> <!-- Vermelho intermediário com alta saturação -->
+    <color name="error_light_600">#E00000</color> <!-- Um vermelho claro vibrante -->
+    <color name="error_light_500">#FF0000</color> <!-- Vermelho puro, o mais vivo possível -->
+    <color name="error_light_400">#FF3333</color> <!-- Vermelho com toque ligeiramente mais claro -->
+    <color name="error_pale_300">#FF6666</color> <!-- Vermelho suave mas ainda vibrante -->
+    <color name="error_pale_200">#FF9999</color> <!-- Vermelho pastel vivo -->
+    <color name="error_pale_100">#FFCCCC</color> <!-- Tom claro e quente -->
+    <color name="error_off_white_50">#FFE5E5</color> <!-- Branco com leve tom de vermelho suave -->
+
 
     <!-- Cores de Aviso -->
     <color name="warning_dark_900">#FF6F00</color>

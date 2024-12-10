@@ -58,7 +58,7 @@
     <string name="titulo">Título</string>
     <string name="titulo_placeholder">Ex: Cadeiras Quebradas na Sala</string>
     <string name="descricao">Descrição</string>
-    <string name="descricao_placeholder">Relate aqui...</string>
+    <string name="descricao_placeholder">Relate aqui…</string>
     <string name="descricao_problema">Descrição do Problema</string>
     <string name="descricao_problema_texto">Muitas cadeiras da sala 118 estão danificadas, o que prejudica o conforto e a postura dos alunos e professores.</string>
     <string name="status_ocorrencia">Status da Ocorrência</string>
@@ -122,8 +122,11 @@
     </string-array>
 
     <string-array name="status_array">
-        <item>Aberto</item>
-        <item>Em Andamento</item>
-        <item>Concluído</item>
+        <item>Em aberto</item>
+        <item>Em análise</item>
+        <item>Avaliado</item>
+        <item>Cancelado</item>
+        <item>Iniciado</item>
+        <item>Finalizado</item>
     </string-array>
 </resources>

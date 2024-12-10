@@ -61,17 +61,6 @@ class HomeUserFragment : Fragment() {
         ocorrenciasRecyclerView.layoutManager = LinearLayoutManager(context)
         recuperarOcorrencias()
 
-        /*
-
-        val ocorrenciasList = arrayListOf(
-            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 1", "Descrição da ocorrência 1", "Status 1", "Pr.1", "Local 1", "Categoria 1"),
-            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 2", "Descrição da ocorrência 2", "Status 2", "Pr.2", "Local 2", "Categoria 2"),
-            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 3", "Descrição da ocorrência 3", "Status 3", "Pr.3", "Local 3", "Categoria 3"),
-            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 4", "Descrição da ocorrência 4", "Status 4", "Pr.4", "Local 4", "Categoria 4")
-        )
-        recyclerView.adapter = OcorrenciaAdapter(ocorrenciasList)
-        */
-
         // Lógica do FAB
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAdicionarOcorrencia)
         fab.setOnClickListener {
