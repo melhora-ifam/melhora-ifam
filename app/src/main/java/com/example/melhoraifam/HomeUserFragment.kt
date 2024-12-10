@@ -37,6 +37,7 @@ class HomeUserFragment : Fragment() {
     private lateinit var binding : ActivityHomepageBinding
     private lateinit var database: DatabaseReference
     private lateinit var ocorrenciasList: MutableList<OcorrenciaModel>
+    private lateinit var idsList: MutableList<String>
     private lateinit var adapter: OcorrenciaAdapter
     private lateinit var ocorrenciasRecyclerView: RecyclerView
 
@@ -54,7 +55,8 @@ class HomeUserFragment : Fragment() {
         // Lógica do RecyclerView
         database = Firebase.database.reference
         ocorrenciasList = mutableListOf()
-        adapter = OcorrenciaAdapter(ocorrenciasList)
+        idsList = mutableListOf()
+        adapter = OcorrenciaAdapter(ocorrenciasList, idsList)
         ocorrenciasRecyclerView = view.findViewById<RecyclerView>(R.id.Ocorrencias)
         ocorrenciasRecyclerView.layoutManager = LinearLayoutManager(context)
         recuperarOcorrencias()
@@ -164,20 +166,24 @@ class HomeUserFragment : Fragment() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     ocorrenciasList.clear()
+                    idsList.clear()
                     for (ocorrenciaSnapshot in snapshot.children) {
                         val ocorrencia = ocorrenciaSnapshot.getValue(OcorrenciaModel::class.java)
-                        if (ocorrencia != null) {
+                        val id = ocorrenciaSnapshot.key
+                        if (ocorrencia != null && id != null) {
                             ocorrenciasList.add(ocorrencia)
+                            idsList.add(id)
                         }
                     }
-                    adapter = OcorrenciaAdapter(ocorrenciasList) // Adiciona as ocorrências no adapter
+                    adapter = OcorrenciaAdapter(ocorrenciasList, idsList) // Adiciona as ocorrências no adapter
                     ocorrenciasRecyclerView.adapter = adapter
 
                     // Adiciona interatividade nos cards
                     adapter.setOnItemClickListener(object: OcorrenciaAdapter.OnItemClickListener{
-                        override fun onItemClick(position: Int) {
-                            Toast.makeText(context, "Card nº $position selecionado", Toast.LENGTH_SHORT).show()
+                        override fun onItemClick(id: String) {
+                            Toast.makeText(context, "Card com o id $id selecionado", Toast.LENGTH_SHORT).show()
                             val intent = Intent(requireContext(), ActivityDetalheOcorrencia::class.java)
+                            intent.putExtra("OCORRENCIA_ID", id)
                             startActivity(intent)
                         }
                     })

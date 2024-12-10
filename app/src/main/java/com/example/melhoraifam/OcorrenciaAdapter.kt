@@ -7,11 +7,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class OcorrenciaAdapter(private val ocorrenciasList: MutableList<OcorrenciaModel>) : RecyclerView.Adapter<OcorrenciaAdapter.OcorrenciaViewHolder>() {
+class OcorrenciaAdapter(
+    private val ocorrenciasList: MutableList<OcorrenciaModel>,
+    private val idsList: MutableList<String>
+) : RecyclerView.Adapter<OcorrenciaAdapter.OcorrenciaViewHolder>() {
     private lateinit var mListener: OnItemClickListener
 
     interface OnItemClickListener {
-        fun onItemClick(position: Int)
+        fun onItemClick(id: String)
     }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
@@ -32,6 +35,11 @@ class OcorrenciaAdapter(private val ocorrenciasList: MutableList<OcorrenciaModel
         holder.prioridade.text = ocorrencia.prioridade
         holder.local.text = ocorrencia.local
         holder.categoria.text = ocorrencia.categoria
+
+        holder.itemView.setOnClickListener {
+            val id = idsList[position]
+            mListener.onItemClick(id)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -47,10 +55,10 @@ class OcorrenciaAdapter(private val ocorrenciasList: MutableList<OcorrenciaModel
         val categoria = itemView.findViewById<TextView>(R.id.card_categoria_txt)
         val imagem = itemView.findViewById<ImageView>(R.id.imagem_ocorrencia)
 
-        init {
+        /*init {
             itemView.setOnClickListener() {
                 listener.onItemClick(adapterPosition)
             }
-        }
+        }*/
     }
 }
