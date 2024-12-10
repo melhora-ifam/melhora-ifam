@@ -1,5 +1,6 @@
 package com.example.melhoraifam
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -36,6 +37,7 @@ class HomeUserFragment : Fragment() {
     private lateinit var binding : ActivityHomepageBinding
     private lateinit var database: DatabaseReference
     private lateinit var ocorrenciasList: MutableList<OcorrenciaModel>
+    private lateinit var idsList: MutableList<String>
     private lateinit var adapter: OcorrenciaAdapter
     private lateinit var ocorrenciasRecyclerView: RecyclerView
 
@@ -53,21 +55,11 @@ class HomeUserFragment : Fragment() {
         // Lógica do RecyclerView
         database = Firebase.database.reference
         ocorrenciasList = mutableListOf()
-        adapter = OcorrenciaAdapter(ocorrenciasList)
+        idsList = mutableListOf()
+        adapter = OcorrenciaAdapter(ocorrenciasList, idsList)
         ocorrenciasRecyclerView = view.findViewById<RecyclerView>(R.id.Ocorrencias)
         ocorrenciasRecyclerView.layoutManager = LinearLayoutManager(context)
         recuperarOcorrencias()
-
-        /*
-
-        val ocorrenciasList = arrayListOf(
-            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 1", "Descrição da ocorrência 1", "Status 1", "Pr.1", "Local 1", "Categoria 1"),
-            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 2", "Descrição da ocorrência 2", "Status 2", "Pr.2", "Local 2", "Categoria 2"),
-            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 3", "Descrição da ocorrência 3", "Status 3", "Pr.3", "Local 3", "Categoria 3"),
-            OcorrenciaModel(R.drawable.slowpoke, "Ocorrência 4", "Descrição da ocorrência 4", "Status 4", "Pr.4", "Local 4", "Categoria 4")
-        )
-        recyclerView.adapter = OcorrenciaAdapter(ocorrenciasList)
-        */
 
         // Lógica do FAB
         val fab = view.findViewById<FloatingActionButton>(R.id.fabAdicionarOcorrencia)
@@ -160,19 +152,33 @@ class HomeUserFragment : Fragment() {
         return view
     }
 
+    // Lógica de recuperar ocorrências no Firebase
     private fun recuperarOcorrencias() {
         database.child("ocorrencias").addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     ocorrenciasList.clear()
+                    idsList.clear()
                     for (ocorrenciaSnapshot in snapshot.children) {
                         val ocorrencia = ocorrenciaSnapshot.getValue(OcorrenciaModel::class.java)
-                        if (ocorrencia != null) {
+                        val id = ocorrenciaSnapshot.key
+                        if (ocorrencia != null && id != null) {
                             ocorrenciasList.add(ocorrencia)
+                            idsList.add(id)
                         }
                     }
-                    adapter = OcorrenciaAdapter(ocorrenciasList)
+                    adapter = OcorrenciaAdapter(ocorrenciasList, idsList) // Adiciona as ocorrências no adapter
                     ocorrenciasRecyclerView.adapter = adapter
+
+                    // Adiciona interatividade nos cards
+                    adapter.setOnItemClickListener(object: OcorrenciaAdapter.OnItemClickListener{
+                        override fun onItemClick(id: String) {
+                            Toast.makeText(context, "Card com o id $id selecionado", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(requireContext(), ActivityDetalheOcorrencia::class.java)
+                            intent.putExtra("OCORRENCIA_ID", id)
+                            startActivity(intent)
+                        }
+                    })
                 }
             }
 
