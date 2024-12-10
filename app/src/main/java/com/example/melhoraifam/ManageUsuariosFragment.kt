@@ -71,9 +71,9 @@ class ManageUsuariosFragment : Fragment() {
         navBar.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home_navbar -> {
-                    val ocorrencias: Fragment = HomeAdminFragment()
+                    val home: Fragment = HomeAdminFragment()
                     val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-                    transaction.replace(R.id.frameLayoutHome, ocorrencias)
+                    transaction.replace(R.id.frameLayoutHome, home)
                     transaction.commit()
                     true
                 }
@@ -82,7 +82,10 @@ class ManageUsuariosFragment : Fragment() {
                     true
                 }
                 R.id.perfil_navbar -> {
-                    Toast.makeText(context, "Perfil do usuário", Toast.LENGTH_SHORT).show()
+                    val perfilFragment: Fragment = PerfilFragment()
+                    val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+                    transaction.replace(R.id.frameLayoutHome, perfilFragment)
+                    transaction.commit()
                     true
                 }
                 else -> false
