@@ -11,32 +11,21 @@ import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 /**
  * Inclui a lógica de incluir uma nova
  * ocorrência no banco de dados
  */
 class RegistroDeOcorrenciaFragment : Fragment() {
-
-    // Definir parâmetros, se necessário
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflar o layout para este fragmento
         val view = inflater.inflate(R.layout.fragment_registro_de_ocorrencia, container, false)
@@ -66,9 +55,7 @@ class RegistroDeOcorrenciaFragment : Fragment() {
         localInput.adapter = localAdapter
 
         val tituloInput = view.findViewById<EditText>(R.id.tituloOcorrencia)
-        // val localInput = view.findViewById<Spinner>(R.id.local)
         val localEspecificoInput = view.findViewById<EditText>(R.id.local_especifico_input)
-        // val categoriaInput = view.findViewById<Spinner>(R.id.categoria)
         val descricaoInput = view.findViewById<EditText>(R.id.descricao)
 
         // Enviar os dados para o firebase
@@ -79,25 +66,45 @@ class RegistroDeOcorrenciaFragment : Fragment() {
             val localEspecifico = localEspecificoInput.text.toString().trim()
             val categoria = categoriaInput.selectedItem.toString()
             val descricao = descricaoInput.text.toString().trim()
-            val prioridade = "N1"
-            val status = "Em aberto"
+            val prioridade = "N4" // Padrão, menor prioridade
+            val status = "Em aberto" // Padrão, status inicial
             val imagem = "https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/079.png"
+            val data = recuperarDataAtual()
 
             if (titulo.isEmpty() || localEspecifico.isEmpty() || descricao.isEmpty()){
                 Toast.makeText(context, "Preencha todos os campos!", Toast.LENGTH_SHORT).show()
             } else {
-                val ocorrenciaMap = mapOf(
-                    "titulo" to titulo,
-                    "local" to local,
-                    "localEspecifico" to localEspecifico,
-                    "categoria" to categoria,
-                    "descricao" to descricao,
-                    "prioridade" to prioridade,
-                    "status" to status,
-                    "imagem" to imagem
-                )
+                // Recuperar o nome do usuário que enviou a ocorrência
+                val uid = FirebaseAuth.getInstance().currentUser?.uid
+                if (uid != null) {
+                    val userRef = Firebase.database.getReference("users").child(uid)
+                    userRef.addListenerForSingleValueEvent(object: ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            val autor = snapshot.child("nome").value?.toString() ?: "Usuário desconhecido"
 
-                registrarOcorrencia(ocorrenciaMap)
+                            val ocorrenciaMap = mapOf(
+                                "titulo" to titulo,
+                                "local" to local,
+                                "localEspecifico" to localEspecifico,
+                                "categoria" to categoria,
+                                "descricao" to descricao,
+                                "prioridade" to prioridade,
+                                "status" to status,
+                                "imagem" to imagem,
+                                "data" to data,
+                                "autor" to autor
+                            )
+
+                            registrarOcorrencia(ocorrenciaMap)
+                        }
+
+                        override fun onCancelled(error: DatabaseError) {
+                            Toast.makeText(context, "Erro ao recuperar o autor da ocorrência", Toast.LENGTH_SHORT).show()
+                        }
+                    })
+                } else {
+                    Toast.makeText(context, "Usuário não autenticado!", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
@@ -123,5 +130,10 @@ class RegistroDeOcorrenciaFragment : Fragment() {
         } else {
             Toast.makeText(context, "Erro ao gerar ID para ocorrência", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun recuperarDataAtual(): String {
+        val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        return dateFormat.format(Date())
     }
 }
