@@ -78,10 +78,7 @@ class ManageUsuariosFragment : Fragment() {
                     true
                 }
                 R.id.usuarios_navbar -> {
-                    val ocorrencias: Fragment = ManageUsuariosFragment()
-                    val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-                    transaction.replace(R.id.frameLayoutHome, ocorrencias)
-                    transaction.commit()
+                    Toast.makeText(context, "Usuários", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.perfil_navbar -> {

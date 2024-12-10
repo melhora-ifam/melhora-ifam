@@ -118,16 +118,13 @@ class HomeAdminFragment : Fragment() {
         bottomNavBar.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home_navbar -> {
-                    val home: Fragment = HomeAdminFragment()
-                    val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-                    transaction.replace(R.id.frameLayoutHome, home)
-                    transaction.commit()
+                    Toast.makeText(context, "Homepage", Toast.LENGTH_SHORT).show()
                     true
                 }
                 R.id.usuarios_navbar -> {
-                    val ocorrencias: Fragment = ManageUsuariosFragment()
+                    val usuarios: Fragment = ManageUsuariosFragment()
                     val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-                    transaction.replace(R.id.frameLayoutHome, ocorrencias)
+                    transaction.replace(R.id.frameLayoutHome, usuarios)
                     transaction.commit()
                     true
                 }
