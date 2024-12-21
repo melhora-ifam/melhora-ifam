@@ -206,7 +206,7 @@
                 android:src="@drawable/delete" />
 
             <TextView
-                android:id="@+id/tvLogout"
+                android:id="@+id/tvExcluirConta"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:clickable="true"
@@ -219,6 +219,39 @@
 
         <View
             android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/neutral_light_300" />
+
+        <LinearLayout
+            android:id="@+id/encerrar_sessao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@color/neutral_light_100"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/logout"
+                android:tint="@color/neutral_dark_900"/>
+
+            <TextView
+                android:id="@+id/tvLogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Encerrar Sessão"
+                android:textColor="@color/neutral_dark_900"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="@color/neutral_light_300" />

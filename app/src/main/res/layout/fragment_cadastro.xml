@@ -41,7 +41,8 @@
             android:hint="@string/nome"
             android:inputType="text"
             android:paddingHorizontal="8dp"
-            android:textColorHint="@color/neutral_dark_900" />
+            android:textColorHint="@color/neutral_dark_900"
+            android:textColor="@color/neutral_dark_900"/>
 
         <EditText
             android:id="@+id/email"
@@ -55,7 +56,8 @@
             android:hint="@string/email_institucional"
             android:inputType="textEmailAddress"
             android:paddingHorizontal="8dp"
-            android:textColorHint="@color/neutral_dark_900" />
+            android:textColorHint="@color/neutral_dark_900"
+            android:textColor="@color/neutral_dark_900"/>
 
         <EditText
             android:id="@+id/senha"
@@ -69,7 +71,8 @@
             android:hint="@string/senha"
             android:inputType="textPassword"
             android:paddingHorizontal="8dp"
-            android:textColorHint="@color/neutral_dark_900" />
+            android:textColorHint="@color/neutral_dark_900"
+            android:textColor="@color/neutral_dark_900"/>
 
         <EditText
             android:id="@+id/celular"
@@ -83,7 +86,8 @@
             android:hint="@string/celular"
             android:inputType="text"
             android:paddingHorizontal="8dp"
-            android:textColorHint="@color/neutral_dark_900" />
+            android:textColorHint="@color/neutral_dark_900"
+            android:textColor="@color/neutral_dark_900"/>
     </LinearLayout>
 
     <TextView

@@ -43,6 +43,7 @@
         android:hint="@string/email_cadastrado"
         android:inputType="textEmailAddress"
         android:textColorHint="@color/neutral_dark_900"
+        android:textColor="@color/neutral_dark_900"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.493"
