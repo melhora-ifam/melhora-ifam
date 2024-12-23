@@ -129,10 +129,4 @@ class PerfilFragment : Fragment() {
         startActivity(intent)
     }
 
-    private fun alterarSenha(){
-        val recuperacao: Fragment = RedefinirSenhaFragment()
-        val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
-        transaction.replace(R.id.RedefinirSenhaFragment, recuperacao)
-        transaction.commit()
-    }
 }
