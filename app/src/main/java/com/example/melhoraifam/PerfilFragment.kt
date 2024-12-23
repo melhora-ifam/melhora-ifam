@@ -42,6 +42,14 @@ class PerfilFragment : Fragment() {
         encerrar_sessao.setOnClickListener { finalizarSessao() }
         encerrar_sessao_tv.setOnClickListener { finalizarSessao() }
 
+        val alterarSenha = view.findViewById<LinearLayout>(R.id.alterarSenhaPerfil)
+        alterarSenha.setOnClickListener {
+            val recuperacao: Fragment = RedefinirSenhaFragment()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.main, recuperacao)
+            transaction.commit()
+        }
+
         return view
     }
 
@@ -119,5 +127,12 @@ class PerfilFragment : Fragment() {
         auth.signOut()
         val intent = Intent(requireContext(), MainActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun alterarSenha(){
+        val recuperacao: Fragment = RedefinirSenhaFragment()
+        val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+        transaction.replace(R.id.RedefinirSenhaFragment, recuperacao)
+        transaction.commit()
     }
 }
