@@ -1,15 +1,26 @@
 package com.example.melhoraifam
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
 import android.widget.Toast
+import android.app.AlertDialog
+import android.widget.Button
+import android.content.Context
 import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -26,6 +37,12 @@ class ManageUsuariosFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var database: DatabaseReference
+    private lateinit var userList: MutableList<UsuarioModel>
+    private lateinit var idsList: MutableList<String>
+    private lateinit var adapter: UsuarioAdapter
+    private lateinit var userRecyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,19 +55,13 @@ class ManageUsuariosFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_manage_usuarios, container, false)
 
         // Lógica do RecyclerView
-        val recyclerView = view.findViewById<RecyclerView>(R.id.Usuarios)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        val usuariosList = arrayListOf(
-            UsuarioModel(R.drawable.samus, "Fulana de Tal", true),
-            UsuarioModel(R.drawable.samus, "Fulano de Tal", true),
-            UsuarioModel(R.drawable.samus, "Ciclano de Tal", false),
-            UsuarioModel(R.drawable.samus, "Beltrano de Tal", false),
-            UsuarioModel(R.drawable.samus, "Ciclana de Tal", true),
-            UsuarioModel(R.drawable.samus, "Fulana de Tal", true),
-            UsuarioModel(R.drawable.samus, "Fulano de Tal", false),
-            UsuarioModel(R.drawable.samus, "Ciclano de Tal", false),
-        )
-        recyclerView.adapter = UsuarioAdapter(usuariosList)
+        database = Firebase.database.reference
+        userList = mutableListOf()
+        idsList = mutableListOf()
+        adapter = UsuarioAdapter(userList, idsList)
+        userRecyclerView = view.findViewById<RecyclerView>(R.id.Usuarios)
+        userRecyclerView.layoutManager = LinearLayoutManager(context)
+        users()
 
         // Lógica da search bar
         val search = view.findViewById<SearchView>(R.id.barraDePesquisaUsuarios)
@@ -94,6 +105,67 @@ class ManageUsuariosFragment : Fragment() {
 
         return view
     }
+
+    private fun users() {
+        database.child("users").addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    userList.clear()
+                    idsList.clear()
+                    for (userSnapshot in snapshot.children) {
+                        val user = userSnapshot.getValue(UsuarioModel::class.java)
+                        val id = userSnapshot.key
+                        if (user != null && id != null) {
+                            userList.add(user)
+                            idsList.add(id)
+                        }
+                    }
+                    adapter = UsuarioAdapter(userList, idsList)
+                    userRecyclerView.adapter = adapter
+
+                    // Adiciona interatividade nos cards
+                    adapter.setOnItemClickListener(object: UsuarioAdapter.OnItemClickListener{
+                        override fun onItemClick(id: String) {
+                            Toast.makeText(context, "Card com o id $id selecionado", Toast.LENGTH_SHORT).show() // aqui abre o promver admin
+                            abrirDialog(id)
+                        }
+                    })
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("HomeAdminFragment", "Erro ao recuperar dados: ${error.message}")            }
+        })
+    }
+
+
+    fun abrirDialog(userId: String) {
+        Log.d("ManageUsuariosFragment", "Abrindo diálogo...")
+        val builder = AlertDialog.Builder(context)
+        val inflater = LayoutInflater.from(context)
+        val view = inflater.inflate(R.layout.dialog_promover_admin, null)
+
+        builder.setView(view)
+        val dialogo = builder.create()
+
+        val btnSim = view.findViewById<Button>(R.id.buttonSim)
+        val btnNao = view.findViewById<Button>(R.id.buttonNao)
+
+        btnSim.setOnClickListener {
+            val userRef = Firebase.database.reference.child("users").child(userId)
+            userRef.child("admin").setValue(true)
+            Toast.makeText(context, "Usuário promovido!", Toast.LENGTH_SHORT).show()
+            dialogo.dismiss()
+        }
+
+        btnNao.setOnClickListener {
+            Toast.makeText(context, "Ação cancelada!", Toast.LENGTH_SHORT).show()
+            dialogo.dismiss()
+        }
+
+        dialogo.show()
+    }
+
 
     companion object {
         /**
