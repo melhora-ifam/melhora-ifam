@@ -42,6 +42,13 @@ class PerfilFragment : Fragment() {
         encerrar_sessao.setOnClickListener { finalizarSessao() }
         encerrar_sessao_tv.setOnClickListener { finalizarSessao() }
 
+        val termosPerfil = view.findViewById<LinearLayout>(R.id.termosPerfil)
+        termosPerfil.setOnClickListener {
+            val intent = Intent(requireContext(), termos_e_condicoes::class.java)
+            startActivity(intent)
+        }
+
+
         return view
     }
 
@@ -117,6 +124,11 @@ class PerfilFragment : Fragment() {
     private fun finalizarSessao() {
         Toast.makeText(context, "Encerrando a sessão...", Toast.LENGTH_SHORT).show()
         auth.signOut()
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun termosECond() {
         val intent = Intent(requireContext(), MainActivity::class.java)
         startActivity(intent)
     }
