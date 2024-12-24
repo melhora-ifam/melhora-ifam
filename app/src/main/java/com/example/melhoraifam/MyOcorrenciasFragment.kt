@@ -1,13 +1,24 @@
 package com.example.melhoraifam
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,6 +35,12 @@ class MyOcorrenciasFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var database: DatabaseReference
+    private lateinit var ocorrenciasList: MutableList<OcorrenciaModel>
+    private lateinit var idsList: MutableList<String>
+    private lateinit var adapter: OcorrenciaAdapter
+    private lateinit var ocorrenciasRecyclerView: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,6 +55,15 @@ class MyOcorrenciasFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_my_ocorrencias, container, false)
+
+        // Lógica do RecyclerView
+        database = Firebase.database.reference
+        ocorrenciasList = mutableListOf()
+        idsList = mutableListOf()
+        adapter = OcorrenciaAdapter(ocorrenciasList, idsList)
+        ocorrenciasRecyclerView = view.findViewById(R.id.minhas_ocorrencias)
+        ocorrenciasRecyclerView.layoutManager = LinearLayoutManager(context)
+        recuperarMinhasOcorrencias()
 
         // Lógica do navBar
         val navBar = requireActivity().findViewById<BottomNavigationView>(R.id.bottom_navbar)
@@ -68,23 +94,45 @@ class MyOcorrenciasFragment : Fragment() {
         return view
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment MyOcorrenciasFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            MyOcorrenciasFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    private fun recuperarMinhasOcorrencias() {
+        val currentUser = Firebase.auth.currentUser
+        val userID = currentUser?.uid
+
+        if (userID == null) {
+            Toast.makeText(context, "Erro: Usuário não autenticado!", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        database.child("ocorrencias").addValueEventListener(object: ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    ocorrenciasList.clear()
+                    idsList.clear()
+                    for (ocorrenciaSnapshot in snapshot.children) {
+                        val ocorrencia = ocorrenciaSnapshot.getValue(OcorrenciaModel::class.java)
+                        val id = ocorrenciaSnapshot.key
+                        if (ocorrencia != null && id != null && ocorrencia.autorID == userID) {
+                            ocorrenciasList.add(ocorrencia)
+                            idsList.add(id)
+                        }
+                    }
+                    adapter = OcorrenciaAdapter(ocorrenciasList, idsList) // Adiciona as ocorrências no adapter
+                    ocorrenciasRecyclerView.adapter = adapter
+
+                    // Adiciona interatividade nos cards
+                    adapter.setOnItemClickListener(object: OcorrenciaAdapter.OnItemClickListener{
+                        override fun onItemClick(id: String) {
+                            Toast.makeText(context, "Card com o id $id selecionado", Toast.LENGTH_SHORT).show()
+                            val intent = Intent(requireContext(), ActivityDetalheOcorrencia::class.java)
+                            intent.putExtra("OCORRENCIA_ID", id)
+                            startActivity(intent)
+                        }
+                    })
                 }
             }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("HomeAdminFragment", "Erro ao recuperar dados: ${error.message}")            }
+        })
     }
 }
