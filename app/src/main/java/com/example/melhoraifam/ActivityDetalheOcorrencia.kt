@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Spinner
@@ -33,6 +34,7 @@ import java.io.FileOutputStream
 class ActivityDetalheOcorrencia : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var prioridade: String
+    private lateinit var status: String
     private var isAdmin: Boolean = false
 
     private lateinit var cardNivel1: CardView
@@ -68,7 +70,9 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
                 isAdmin = isAdminResult
                 Log.d("Detalhes", "Admin? $isAdmin")
                 if (isAdmin) {
-                    grantAdminPrivileges()
+                    if (idOcorrencia != null) {
+                        grantAdminPrivileges(idOcorrencia)
+                    }
                 } else {
                     btn_salvar.visibility = View.GONE
                     btn_gerar_relatorio.visibility = View.GONE
@@ -246,10 +250,23 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
         })
     }
 
-    private fun grantAdminPrivileges() {
+    private fun grantAdminPrivileges(idOcorrencia: String) {
         // Trocar o text view pelo spinner
         val tv_status = findViewById<TextView>(R.id.status)
         tv_status.visibility = View.GONE
+
+        val spinner_status = findViewById<Spinner>(R.id.spinner_status)
+        spinner_status.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val textoSelecionado = parent?.getItemAtPosition(position).toString()
+                Toast.makeText(this@ActivityDetalheOcorrencia, "Selecionado: $textoSelecionado", Toast.LENGTH_SHORT).show()
+                status = textoSelecionado
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                // Nenhuma ação necessária aqui
+            }
+        }
 
         // Deixar os botões de prioridade interagíveis
         val cardViews = mapOf(
@@ -263,6 +280,24 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
             cardView.setOnClickListener {
                 definirPrioridade(priori)
             }
+        }
+
+        // Salvar as alterações
+        val btn_salvar = findViewById<Button>(R.id.btn_salvar)
+        btn_salvar.setOnClickListener {
+            val novos_dados = mapOf(
+                "prioridade" to prioridade,
+                "status" to status)
+
+            Toast.makeText(this@ActivityDetalheOcorrencia, "Prioridade: $prioridade, Status: $status", Toast.LENGTH_SHORT).show()
+            val ocorrenciaRef = Firebase.database.getReference("ocorrencias").child(idOcorrencia)
+            ocorrenciaRef.updateChildren(novos_dados)
+                .addOnSuccessListener {
+                    Toast.makeText(this@ActivityDetalheOcorrencia, "Dados atualizados com sucesso", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener { exception ->
+                    Toast.makeText(this@ActivityDetalheOcorrencia, "Erro: $exception", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 }

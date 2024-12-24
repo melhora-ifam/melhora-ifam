@@ -1,9 +1,13 @@
 package com.example.melhoraifam
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -19,11 +23,7 @@ class PerfilFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
     private var isAdmin: Boolean = false
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflar o layout para este fragmento
         val view = inflater.inflate(R.layout.activity_perfil, container, false)
 
@@ -36,6 +36,25 @@ class PerfilFragment : Fragment() {
 
         // Configurar a barra de navegação
         setupNavBar()
+
+        val encerrar_sessao = view.findViewById<LinearLayout>(R.id.encerrar_sessao)
+        val encerrar_sessao_tv = view.findViewById<TextView>(R.id.tvLogout)
+        encerrar_sessao.setOnClickListener { finalizarSessao() }
+        encerrar_sessao_tv.setOnClickListener { finalizarSessao() }
+
+        val alterarSenha = view.findViewById<LinearLayout>(R.id.alterarSenhaPerfil)
+        alterarSenha.setOnClickListener {
+            val recuperacao: Fragment = RedefinirSenhaFragment()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.main, recuperacao)
+            transaction.commit()
+        }
+
+        val termosPerfil = view.findViewById<LinearLayout>(R.id.termosPerfil)
+        termosPerfil.setOnClickListener {
+            val intent = Intent(requireContext(), termos_e_condicoes::class.java)
+            startActivity(intent)
+        }
 
         return view
     }
@@ -107,5 +126,17 @@ class PerfilFragment : Fragment() {
         val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
         transaction.replace(R.id.frameLayoutHome, fragment)
         transaction.commit()
+    }
+
+    private fun finalizarSessao() {
+        Toast.makeText(context, "Encerrando a sessão...", Toast.LENGTH_SHORT).show()
+        auth.signOut()
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
+    }
+
+    private fun termosECond() {
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
     }
 }
