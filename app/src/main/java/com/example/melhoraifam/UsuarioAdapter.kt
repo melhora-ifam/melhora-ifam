@@ -6,11 +6,23 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.melhoraifam.OcorrenciaAdapter.OnItemClickListener
 
-class UsuarioAdapter(private val usuariosList: ArrayList<UsuarioModel>) : RecyclerView.Adapter<UsuarioAdapter.UsuarioViewHolder>() {
+class UsuarioAdapter(private val usuariosList: MutableList<UsuarioModel>,  private val idsList: MutableList<String>) : RecyclerView.Adapter<UsuarioAdapter.UsuarioViewHolder>() {
+
+    private lateinit var mListener: com.example.melhoraifam.UsuarioAdapter.OnItemClickListener
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioAdapter.UsuarioViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.usuario_card, parent, false)
         return UsuarioViewHolder(itemView)
+    }
+
+    interface OnItemClickListener {
+        fun onItemClick(id: String)
+    }
+
+    fun setOnItemClickListener(listener: com.example.melhoraifam.UsuarioAdapter.OnItemClickListener) {
+        mListener = listener
     }
 
     override fun onBindViewHolder(holder: UsuarioAdapter.UsuarioViewHolder, position: Int) {
@@ -21,6 +33,11 @@ class UsuarioAdapter(private val usuariosList: ArrayList<UsuarioModel>) : Recycl
             holder.admin.setImageResource(R.drawable.admin)
         } else {
             holder.admin.setImageResource(R.drawable.upgrade)
+        }
+
+        holder.itemView.setOnClickListener {
+            val id = idsList[position]
+            mListener.onItemClick(id)
         }
     }
 
