@@ -1,7 +1,9 @@
 package com.example.melhoraifam
 
+import android.app.AlertDialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,6 +28,9 @@ class PerfilFragment : Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflar o layout para este fragmento
         val view = inflater.inflate(R.layout.activity_perfil, container, false)
+        val tvExcluirConta = view.findViewById<TextView>(R.id.tvExcluirConta)
+        tvExcluirConta.setOnClickListener { excluirUsuario() }
+        tvExcluirConta.setOnClickListener { confirmarExclusao() }
 
         auth = FirebaseAuth.getInstance()
         val currentUser = auth.currentUser
@@ -119,5 +124,67 @@ class PerfilFragment : Fragment() {
         auth.signOut()
         val intent = Intent(requireContext(), MainActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun excluirUsuario() {
+        val currentUser = auth.currentUser
+        if (currentUser != null) {
+            val database = FirebaseDatabase.getInstance()
+
+            // Verifique se o usuário é admin
+            val isAdmin = verificarSeUsuarioEAdmin(currentUser.uid)
+
+            // Referência correta com base no tipo de usuário
+            val userRef = if (isAdmin) {
+                database.getReference("admins").child(currentUser.uid)
+            } else {
+                database.getReference("users").child(currentUser.uid)
+            }
+
+            userRef.removeValue().addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    currentUser.delete().addOnCompleteListener { deleteTask ->
+                        if (deleteTask.isSuccessful) {
+                            Toast.makeText(context, "Usuário excluído com sucesso.", Toast.LENGTH_SHORT).show()
+                            finalizarSessao()
+                        } else {
+                            Toast.makeText(context, "Erro ao excluir o usuário: ${deleteTask.exception?.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } else {
+                    Toast.makeText(context, "Erro ao excluir dados do usuário: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            Toast.makeText(context, "Usuário não autenticado.", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    private fun verificarSeUsuarioEAdmin(userId: String): Boolean {
+
+        val adminRef = FirebaseDatabase.getInstance().getReference("admins").child(userId)
+        var isAdmin = false
+
+        adminRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                isAdmin = snapshot.exists() // Se existe, é um admin
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.e("VerificarAdmin", "Erro ao verificar admin: ${error.message}")
+            }
+        })
+
+        return isAdmin
+    }
+
+
+    private fun confirmarExclusao() {
+        val builder = AlertDialog.Builder(requireContext())
+        builder.setTitle("Confirmar Exclusão")
+        builder.setMessage("Você tem certeza que deseja excluir sua conta? Esta ação é irreversível.")
+        builder.setPositiveButton("Sim") { _, _ -> excluirUsuario() }
+        builder.setNegativeButton("Não", null)
+        builder.show()
     }
 }
