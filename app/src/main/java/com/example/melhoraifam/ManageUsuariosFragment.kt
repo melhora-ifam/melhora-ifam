@@ -127,7 +127,7 @@ class ManageUsuariosFragment : Fragment() {
                     adapter.setOnItemClickListener(object: UsuarioAdapter.OnItemClickListener{
                         override fun onItemClick(id: String) {
                             Toast.makeText(context, "Card com o id $id selecionado", Toast.LENGTH_SHORT).show() // aqui abre o promver admin
-                            abrirDialog(id)
+                             abrirDialog(id)
                         }
                     })
                 }

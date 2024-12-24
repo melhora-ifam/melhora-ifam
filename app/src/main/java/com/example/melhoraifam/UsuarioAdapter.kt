@@ -34,6 +34,11 @@ class UsuarioAdapter(private val usuariosList: MutableList<UsuarioModel>,  priva
         } else {
             holder.admin.setImageResource(R.drawable.upgrade)
         }
+
+        holder.itemView.setOnClickListener {
+            val id = idsList[position]
+            mListener.onItemClick(id)
+        }
     }
 
     override fun getItemCount(): Int {
