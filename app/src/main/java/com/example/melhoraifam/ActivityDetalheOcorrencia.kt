@@ -19,6 +19,16 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.example.melhoraifam.R
+import android.os.Environment
+import com.itextpdf.kernel.pdf.PdfDocument
+import com.itextpdf.layout.element.Paragraph
+import com.itextpdf.kernel.pdf.PdfWriter
+import com.itextpdf.layout.Document
+import android.content.ContentValues
+import android.provider.MediaStore
+import java.io.File
+import java.io.FileOutputStream
 
 class ActivityDetalheOcorrencia : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
@@ -99,6 +109,10 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
 
                         prioridade = ocorrencia.prioridade
                         definirPrioridade(prioridade)
+
+                        btn_gerar_relatorio.setOnClickListener {
+                            gerarRelatorioPDF(ocorrencia)
+                        }
                     }
                 }
 
@@ -116,6 +130,71 @@ class ActivityDetalheOcorrencia : AppCompatActivity() {
         }
     }
 
+    private fun gerarRelatorioPDF(ocorrencia: OcorrenciaModel) {
+        val fileName = "Relatorio_Ocorrencia_${ocorrencia.titulo}.pdf"
+
+        // Para dispositivos Android 10 (API 29) ou superior
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q) {
+            val resolver = contentResolver
+            val contentValues = ContentValues().apply {
+                put(MediaStore.MediaColumns.DISPLAY_NAME, fileName)
+                put(MediaStore.MediaColumns.MIME_TYPE, "application/pdf")
+                put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS)
+            }
+            val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues)
+
+            if (uri != null) {
+                try {
+                    val outputStream = resolver.openOutputStream(uri)
+                    if (outputStream != null) {
+                        val pdfWriter = PdfWriter(outputStream)
+                        val pdfDocument = PdfDocument(pdfWriter)
+                        val document = Document(pdfDocument)
+
+                        document.add(Paragraph("Relatório da Ocorrência"))
+                        //document.add(Paragraph("ID: $idOcorrencia"))
+                        document.add(Paragraph("Título: ${ocorrencia.titulo}"))
+                        document.add(Paragraph("Data: ${ocorrencia.data}"))
+                        document.add(Paragraph("Status: ${ocorrencia.status}"))
+                        document.add(Paragraph("Local: ${ocorrencia.local} - ${ocorrencia.localEspecifico}"))
+                        document.add(Paragraph("Descrição: ${ocorrencia.descricao}"))
+                        document.add(Paragraph("Categoria: ${ocorrencia.categoria}"))
+                        document.add(Paragraph("Autor: ${ocorrencia.autor}"))
+
+                        document.close()
+                        Toast.makeText(this, "Relatório salvo em Downloads.", Toast.LENGTH_LONG).show()
+                    }
+                } catch (e: Exception) {
+                    Toast.makeText(this, "Erro ao salvar o relatório: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        } else {
+            // Para versões Android abaixo do 10
+            val directoryPath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).absolutePath
+            val filePath = "$directoryPath/$fileName"
+
+            try {
+                val pdfWriter = PdfWriter(filePath)
+                val pdfDocument = PdfDocument(pdfWriter)
+                val document = Document(pdfDocument)
+
+                document.add(Paragraph("Relatório da Ocorrência"))
+                //document.add(Paragraph("ID: ${idOcorrencia}"))
+                document.add(Paragraph("Título: ${ocorrencia.titulo}"))
+                document.add(Paragraph("Data: ${ocorrencia.data}"))
+                document.add(Paragraph("Status: ${ocorrencia.status}"))
+                document.add(Paragraph("Local: ${ocorrencia.local} - ${ocorrencia.localEspecifico}"))
+                document.add(Paragraph("Descrição: ${ocorrencia.descricao}"))
+                document.add(Paragraph("Categoria: ${ocorrencia.categoria}"))
+                document.add(Paragraph("Autor: ${ocorrencia.autor}"))
+
+                document.close()
+                Toast.makeText(this, "Relatório salvo em: $filePath", Toast.LENGTH_LONG).show()
+            } catch (e: Exception) {
+                Toast.makeText(this, "Erro ao salvar o relatório: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
     // Lógica para definir os botões de prioridade
     private fun definirPrioridade(nivel: String) {
