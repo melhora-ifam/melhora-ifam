@@ -42,12 +42,19 @@ class PerfilFragment : Fragment() {
         encerrar_sessao.setOnClickListener { finalizarSessao() }
         encerrar_sessao_tv.setOnClickListener { finalizarSessao() }
 
+        val alterarSenha = view.findViewById<LinearLayout>(R.id.alterarSenhaPerfil)
+        alterarSenha.setOnClickListener {
+            val recuperacao: Fragment = RedefinirSenhaFragment()
+            val transaction: FragmentTransaction = parentFragmentManager.beginTransaction()
+            transaction.replace(R.id.main, recuperacao)
+            transaction.commit()
+        }
+
         val termosPerfil = view.findViewById<LinearLayout>(R.id.termosPerfil)
         termosPerfil.setOnClickListener {
             val intent = Intent(requireContext(), termos_e_condicoes::class.java)
             startActivity(intent)
         }
-
 
         return view
     }
