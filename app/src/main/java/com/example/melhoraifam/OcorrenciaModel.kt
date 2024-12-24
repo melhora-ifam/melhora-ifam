@@ -2,6 +2,7 @@ package com.example.melhoraifam
 
 data class OcorrenciaModel(
     var autor: String,
+    val autorID: String,
     var categoria: String,
     var data: String,
     var descricao: String,
@@ -13,6 +14,7 @@ data class OcorrenciaModel(
     var titulo: String) {
 
     constructor() : this(
+        "",
         "",
         "",
         "",

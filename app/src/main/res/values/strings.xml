@@ -63,6 +63,7 @@
     <string name="descricao_problema">Descrição do Problema</string>
     <string name="descricao_problema_texto">Muitas cadeiras da sala 118 estão danificadas, o que prejudica o conforto e a postura dos alunos e professores.</string>
     <string name="status_ocorrencia">Status da Ocorrência</string>
+    <string name="minhas_ocorrencias">Minhas Ocorrências</string>
     <string name="status">Status</string>
     <string name="prioridade">Prioridade</string>
     <string name="nivel_1">Nível 1</string>
