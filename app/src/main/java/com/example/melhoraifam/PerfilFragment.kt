@@ -50,6 +50,12 @@ class PerfilFragment : Fragment() {
             transaction.commit()
         }
 
+        val termosPerfil = view.findViewById<LinearLayout>(R.id.termosPerfil)
+        termosPerfil.setOnClickListener {
+            val intent = Intent(requireContext(), termos_e_condicoes::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 
@@ -129,4 +135,8 @@ class PerfilFragment : Fragment() {
         startActivity(intent)
     }
 
+    private fun termosECond() {
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
+    }
 }

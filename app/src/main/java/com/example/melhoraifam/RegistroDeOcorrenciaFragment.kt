@@ -92,7 +92,8 @@ class RegistroDeOcorrenciaFragment : Fragment() {
                                 "status" to status,
                                 "imagem" to imagem,
                                 "data" to data,
-                                "autor" to autor
+                                "autor" to autor,
+                                "autorID" to uid
                             )
 
                             registrarOcorrencia(ocorrenciaMap)
